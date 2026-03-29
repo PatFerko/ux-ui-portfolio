@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Figma",
+    "icon": "figma",
+    "description": "Primary design tool for UI design, prototyping, and design system management. Used daily for everything from quick sketches to production-ready specs."
+  },
+  {
+    "name": "React",
+    "icon": "react",
+    "description": "Go-to framework for building interactive UIs. I bridge the gap between design and code by implementing my own designs in React."
+  },
+  {
+    "name": "Framer Motion",
+    "icon": "framer",
+    "description": "Animation library for React that brings designs to life with physics-based motion, gestures, and layout animations."
+  },
+  {
+    "name": "Tailwind CSS",
+    "icon": "tailwind",
+    "description": "Utility-first CSS framework that speeds up styling while maintaining design consistency through a shared token system."
+  },
+  {
+    "name": "TypeScript",
+    "icon": "typescript",
+    "description": "Adds type safety to JavaScript, making large codebases more maintainable and catching bugs before they reach production."
+  },
+  {
+    "name": "Storybook",
+    "icon": "storybook",
+    "description": "Component development environment for building, documenting, and testing UI components in isolation."
+  },
+  {
+    "name": "Notion",
+    "icon": "notion",
+    "description": "Research documentation, project planning, and design decision logs. Keeps the entire design process transparent and searchable."
+  },
+  {
+    "name": "Miro",
+    "icon": "miro",
+    "description": "Collaborative whiteboard for remote workshops, affinity mapping, journey mapping, and design sprints."
+  },
+  {
+    "name": "VS Code",
+    "icon": "vscode",
+    "description": "Primary code editor with a carefully curated set of extensions for React, TypeScript, and Tailwind development."
+  },
+  {
+    "name": "Vercel",
+    "icon": "vercel",
+    "description": "Deployment platform for frontend projects. Enables instant previews for every pull request and zero-config deployments."
+  }
+]

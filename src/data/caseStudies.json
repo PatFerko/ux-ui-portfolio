@@ -1,0 +1,158 @@
+[
+  {
+    "id": "fintech-dashboard",
+    "title": "FinTrack Dashboard Redesign",
+    "shortDescription": "Redesigned a complex financial dashboard to reduce cognitive load and improve task completion rates by 40%.",
+    "tags": ["UX Research", "UI Design", "Data Visualization", "Accessibility"],
+    "thumbnail": "/images/fintrack-thumb.webp",
+    "thumbnailIsVideo": false,
+    "problemStatement": "Users were abandoning the dashboard within 2 minutes due to information overload. Key financial metrics were buried under layers of navigation, causing frustration and missed insights.",
+    "processNarrative": [
+      {
+        "phase": "research",
+        "description": "Conducted 12 user interviews and analyzed session recordings to identify pain points. Created affinity maps and journey maps to synthesize findings.",
+        "assets": ["/images/fintrack-research-1.webp", "/images/fintrack-affinity.webp"]
+      },
+      {
+        "phase": "wireframes",
+        "description": "Sketched 30+ layout concepts, narrowed to 3 high-fidelity wireframe directions. Ran A/B preference tests with 50 participants.",
+        "assets": ["/images/fintrack-wireframe-1.webp", "/images/fintrack-wireframe-2.webp"]
+      },
+      {
+        "phase": "ui",
+        "description": "Developed a clean design system with a data-forward color palette. Prioritized progressive disclosure to surface key metrics first.",
+        "assets": ["/images/fintrack-ui-1.webp", "/images/fintrack-ui-2.webp"]
+      },
+      {
+        "phase": "implementation",
+        "description": "Built the dashboard in React with recharts for data visualization. Implemented keyboard navigation and ARIA roles for full accessibility.",
+        "assets": ["/images/fintrack-impl-1.webp"]
+      }
+    ],
+    "beforeAfterVisuals": [
+      {
+        "before": "/images/fintrack-before.webp",
+        "after": "/images/fintrack-after.webp"
+      }
+    ],
+    "metrics": [
+      "40% increase in task completion rate",
+      "2.5x reduction in time-to-insight",
+      "NPS score improved from 32 to 67",
+      "Accessibility score: WCAG 2.1 AA compliant"
+    ],
+    "codeView": {
+      "repoUrl": "https://github.com/alexrivera/fintrack-dashboard",
+      "techStack": ["React", "TypeScript", "recharts", "Tailwind CSS"],
+      "highlights": [
+        "Custom SVG sparkline components with animation",
+        "Virtualized table for 10k+ row datasets",
+        "Real-time WebSocket data integration"
+      ]
+    }
+  },
+  {
+    "id": "health-app",
+    "title": "Wellness Companion App",
+    "shortDescription": "Designed a mental wellness app from zero to launch, achieving 4.8★ App Store rating in the first month.",
+    "tags": ["Mobile UX", "Product Design", "User Testing", "iOS"],
+    "thumbnail": "/images/wellness-thumb.webp",
+    "thumbnailIsVideo": false,
+    "problemStatement": "Existing wellness apps felt clinical and transactional. Users needed a companion that felt warm, personal, and non-judgmental to build sustainable habits.",
+    "processNarrative": [
+      {
+        "phase": "research",
+        "description": "Ran diary studies with 20 participants over 2 weeks to understand daily wellness routines and emotional triggers. Synthesized insights into 4 user personas.",
+        "assets": ["/images/wellness-research-1.webp"]
+      },
+      {
+        "phase": "wireframes",
+        "description": "Explored conversational UI patterns and card-based layouts. Prototyped 5 onboarding flows and tested with 15 users to optimize first-run experience.",
+        "assets": ["/images/wellness-wireframe-1.webp", "/images/wellness-wireframe-2.webp"]
+      },
+      {
+        "phase": "ui",
+        "description": "Created a warm, earthy color palette with soft gradients. Designed a custom illustration system and micro-animation library for emotional resonance.",
+        "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
+      },
+      {
+        "phase": "implementation",
+        "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
+        "assets": ["/images/wellness-impl-1.webp"]
+      }
+    ],
+    "beforeAfterVisuals": [
+      {
+        "before": "/images/wellness-before.webp",
+        "after": "/images/wellness-after.webp"
+      }
+    ],
+    "metrics": [
+      "4.8★ App Store rating (1,200+ reviews)",
+      "68% Day-7 retention rate",
+      "3.2 sessions per day average",
+      "Featured in App Store 'Apps We Love'"
+    ],
+    "codeView": {
+      "repoUrl": "https://github.com/alexrivera/wellness-app",
+      "techStack": ["SwiftUI", "Combine", "Core Data", "HealthKit"],
+      "highlights": [
+        "Custom SwiftUI animation engine for mood tracking",
+        "HealthKit integration for passive data collection",
+        "Offline-first architecture with sync"
+      ]
+    }
+  },
+  {
+    "id": "design-system",
+    "title": "Orbit Design System",
+    "shortDescription": "Built a cross-platform design system adopted by 8 product teams, reducing design-to-dev handoff time by 60%.",
+    "tags": ["Design Systems", "Component Library", "Documentation", "Storybook"],
+    "thumbnail": "/images/orbit-thumb.webp",
+    "thumbnailIsVideo": false,
+    "problemStatement": "Eight product teams were building inconsistent UIs independently, causing brand fragmentation and duplicated engineering effort. A unified system was needed to scale design quality.",
+    "processNarrative": [
+      {
+        "phase": "research",
+        "description": "Audited 400+ UI components across 8 products. Identified 23 distinct button variants and 15 different color systems. Interviewed 16 designers and 12 engineers.",
+        "assets": ["/images/orbit-audit-1.webp", "/images/orbit-audit-2.webp"]
+      },
+      {
+        "phase": "wireframes",
+        "description": "Defined token architecture (color, spacing, typography, motion). Created component API specifications with prop tables and usage guidelines.",
+        "assets": ["/images/orbit-tokens-1.webp"]
+      },
+      {
+        "phase": "ui",
+        "description": "Designed 120+ components in Figma with auto-layout, variants, and interactive states. Established a contribution model for team adoption.",
+        "assets": ["/images/orbit-ui-1.webp", "/images/orbit-ui-2.webp"]
+      },
+      {
+        "phase": "implementation",
+        "description": "Built the component library in React + TypeScript with Storybook documentation. Published to npm with semantic versioning and automated visual regression tests.",
+        "assets": ["/images/orbit-impl-1.webp"]
+      }
+    ],
+    "beforeAfterVisuals": [
+      {
+        "before": "/images/orbit-before.webp",
+        "after": "/images/orbit-after.webp"
+      }
+    ],
+    "metrics": [
+      "60% reduction in design-to-dev handoff time",
+      "120+ reusable components",
+      "8 product teams adopted within 3 months",
+      "98% Storybook component coverage"
+    ],
+    "codeView": {
+      "repoUrl": "https://github.com/alexrivera/orbit-design-system",
+      "techStack": ["React", "TypeScript", "Storybook", "Chromatic", "Rollup"],
+      "highlights": [
+        "Design token pipeline from Figma to CSS variables",
+        "Automated visual regression testing with Chromatic",
+        "Tree-shakeable ESM bundle under 50kb gzipped"
+      ]
+    }
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "UX",
+    "skills": [
+      { "name": "User Research", "level": 95 },
+      { "name": "Usability Testing", "level": 90 },
+      { "name": "Information Architecture", "level": 88 },
+      { "name": "Journey Mapping", "level": 92 },
+      { "name": "Wireframing", "level": 95 },
+      { "name": "Prototyping", "level": 90 },
+      { "name": "Heuristic Evaluation", "level": 85 },
+      { "name": "A/B Testing", "level": 80 },
+      { "name": "Accessibility Auditing", "level": 88 },
+      { "name": "Service Design", "level": 75 },
+      { "name": "Design Thinking", "level": 95 },
+      { "name": "Stakeholder Facilitation", "level": 82 }
+    ]
+  },
+  {
+    "name": "UI",
+    "skills": [
+      { "name": "Design Systems", "level": 95 },
+      { "name": "Typography", "level": 90 },
+      { "name": "Color Theory", "level": 88 },
+      { "name": "Visual Hierarchy", "level": 92 },
+      { "name": "Responsive Design", "level": 95 },
+      { "name": "Motion Design", "level": 85 },
+      { "name": "Iconography", "level": 80 },
+      { "name": "Figma", "level": 98 },
+      { "name": "Component Architecture", "level": 90 },
+      { "name": "Dark Mode Design", "level": 88 },
+      { "name": "Micro-interactions", "level": 85 },
+      { "name": "Brand Identity", "level": 78 }
+    ]
+  },
+  {
+    "name": "Frontend",
+    "skills": [
+      { "name": "React", "level": 92 },
+      { "name": "TypeScript", "level": 88 },
+      { "name": "CSS / Tailwind", "level": 95 },
+      { "name": "HTML / Accessibility", "level": 95 },
+      { "name": "Framer Motion", "level": 85 },
+      { "name": "JavaScript (ES2024)", "level": 90 },
+      { "name": "Vite / Webpack", "level": 80 },
+      { "name": "Testing (Vitest/RTL)", "level": 82 },
+      { "name": "Git / GitHub", "level": 88 },
+      { "name": "Performance Optimization", "level": 85 },
+      { "name": "Node.js", "level": 72 },
+      { "name": "GraphQL", "level": 70 }
+    ]
+  }
+]
