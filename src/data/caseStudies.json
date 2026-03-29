@@ -30,6 +30,11 @@
         "assets": ["/images/fintrack-ui-1.webp", "/images/fintrack-ui-2.webp"]
       },
       {
+        "phase": "wireframes_final",
+        "description": "Translated user flows into detailed wireframes and iterated into polished final screens with the full design system applied.",
+        "assets": ["/images/fintrack-wireframe-final-1.webp", "/images/fintrack-wireframe-final-2.webp"]
+      },
+      {
         "phase": "system",
         "description": "Built the dashboard in React with recharts for data visualization. Implemented keyboard navigation and ARIA roles for full accessibility.",
         "assets": ["/images/fintrack-impl-1.webp"]
@@ -90,6 +95,11 @@
         "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
       },
       {
+        "phase": "wireframes",
+        "description": "Created low and mid-fidelity wireframes to validate layout and interaction patterns before moving to visual design.",
+        "assets": ["/images/wellness-wireframe-detail-1.webp", "/images/wellness-wireframe-detail-2.webp"]
+      },
+      {
         "phase": "system",
         "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
         "assets": ["/images/wellness-impl-1.webp"]
@@ -107,7 +117,7 @@
       }
     ],
     "metrics": [
-      "4.8★ App Store rating (1,200+ reviews)",
+      "4.8\u2605 App Store rating (1,200+ reviews)",
       "68% Day-7 retention rate",
       "3.2 sessions per day average",
       "Featured in App Store 'Apps We Love'"
@@ -121,6 +131,7 @@
         "Offline-first architecture with sync"
       ]
     }
+<<<<<<< Updated upstream
   },
   {
     "id": "design-system",
@@ -183,5 +194,7 @@
         "Tree-shakeable ESM bundle under 50kb gzipped"
       ]
     }
+=======
+>>>>>>> Stashed changes
   }
 ]

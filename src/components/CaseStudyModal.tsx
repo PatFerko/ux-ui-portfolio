@@ -19,16 +19,20 @@ const PHASE_LABELS: Record<string, string> = {
   goals: 'Goals',
   solution: 'Solution',
   flow: 'User Flow',
+  wireframes_final: 'Wireframes & Final Screens',
+  wireframes: 'Wireframes',
   system: 'System Logic',
   learnings: 'Learnings',
 };
 
 const PHASE_ICONS: Record<string, string> = {
-  goals: '🎯',
-  solution: '�',
-  flow: '🔄',
-  system: '⚙️',
-  learnings: '📝',
+  goals: '\u{1F3AF}',
+  solution: '\u{1F4A1}',
+  flow: '\u{1F504}',
+  wireframes_final: '\u{270F}\u{FE0F}',
+  wireframes: '\u{270F}\u{FE0F}',
+  system: '\u{2699}\u{FE0F}',
+  learnings: '\u{1F4DD}',
 };
 
 export function CaseStudyModal({ study, isOpen, onClose, interactiveCaseStudy = false, prototypeScreens = [] }: CaseStudyModalProps) {

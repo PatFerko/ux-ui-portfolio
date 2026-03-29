@@ -18,7 +18,7 @@ export interface CaseStudy {
 }
 
 export interface ProcessStep {
-  phase: 'goals' | 'solution' | 'flow' | 'system' | 'learnings';
+  phase: 'goals' | 'solution' | 'flow' | 'wireframes_final' | 'wireframes' | 'system' | 'learnings';
   description: string;
   assets: string[];
 }

@@ -57,7 +57,7 @@ export function CaseStudiesSection() {
 
         {/* Horizontal scroll container with scroll-snap */}
         <div
-          className="flex gap-6 overflow-x-auto p-2 -m-2 pb-6 snap-x snap-mandatory scroll-smooth"
+          className="flex gap-6 overflow-x-auto p-2 -m-2 pb-6 snap-x snap-mandatory scroll-smooth justify-center"
           style={{ scrollbarWidth: 'thin' }}
           role="list"
           aria-label="Case studies"
