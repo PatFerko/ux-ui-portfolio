@@ -19,10 +19,10 @@ vi.mock('framer-motion', async () => {
   };
 });
 
-const mockUser = { public_repos: 42, html_url: 'https://github.com/alexrivera' };
+const mockUser = { public_repos: 42, html_url: 'https://github.com/PatFerko' };
 const mockRepos = [
-  { name: 'portfolio', description: 'My portfolio site', html_url: 'https://github.com/alexrivera/portfolio', stargazers_count: 10, language: 'TypeScript' },
-  { name: 'design-system', description: null, html_url: 'https://github.com/alexrivera/design-system', stargazers_count: 5, language: 'CSS' },
+  { name: 'portfolio', description: 'My portfolio site', html_url: 'https://github.com/PatFerko/portfolio', stargazers_count: 10, language: 'TypeScript' },
+  { name: 'design-system', description: null, html_url: 'https://github.com/PatFerko/design-system', stargazers_count: 5, language: 'CSS' },
 ];
 
 function renderSocial() {
@@ -60,9 +60,9 @@ describe('SocialSection', () => {
     (fetch as ReturnType<typeof vi.fn>).mockResolvedValue({ ok: false });
     renderSocial();
     const socialLinks = [
-      screen.getByRole('link', { name: /Visit Alex Rivera's GitHub profile/i }),
-      screen.getByRole('link', { name: /Visit Alex Rivera's LinkedIn profile/i }),
-      screen.getByRole('link', { name: /Visit Alex Rivera's Dribbble portfolio/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s GitHub profile/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s LinkedIn profile/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s Dribbble portfolio/i }),
     ];
     socialLinks.forEach((link) => {
       expect(link).toHaveAttribute('target', '_blank');
@@ -74,9 +74,9 @@ describe('SocialSection', () => {
     (fetch as ReturnType<typeof vi.fn>).mockResolvedValue({ ok: false });
     renderSocial();
     const socialLinks = [
-      screen.getByRole('link', { name: /Visit Alex Rivera's GitHub profile/i }),
-      screen.getByRole('link', { name: /Visit Alex Rivera's LinkedIn profile/i }),
-      screen.getByRole('link', { name: /Visit Alex Rivera's Dribbble portfolio/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s GitHub profile/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s LinkedIn profile/i }),
+      screen.getByRole('link', { name: /Visit Patr.*cia Ferkov.*s Dribbble portfolio/i }),
     ];
     socialLinks.forEach((link) => {
       const label = link.getAttribute('aria-label');
@@ -127,12 +127,12 @@ describe('SocialSection', () => {
       expect(screen.getByText(/GitHub stats unavailable/i)).toBeInTheDocument();
     });
     // Both the social link row and the fallback button have the same aria-label
-    const githubLinks = screen.getAllByRole('link', { name: /Visit Alex Rivera's GitHub profile/i });
+    const githubLinks = screen.getAllByRole('link', { name: /Visit Patr.*cia Ferkov.*s GitHub profile/i });
     expect(githubLinks.length).toBeGreaterThanOrEqual(1);
     // The fallback link (the button-style one) should point to the GitHub profile
     const fallbackLink = githubLinks.find((l) => l.textContent?.includes('View GitHub Profile'));
     expect(fallbackLink).toBeDefined();
-    expect(fallbackLink).toHaveAttribute('href', 'https://github.com/alexrivera');
+    expect(fallbackLink).toHaveAttribute('href', 'https://github.com/PatFerko');
   });
 
   it('renders static fallback when GitHub API returns non-2xx', async () => {

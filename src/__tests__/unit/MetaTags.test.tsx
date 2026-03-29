@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 describe('SEO Meta Tags', () => {
   beforeEach(() => {
     // Set the document head to match index.html content
-    document.title = 'Alex Rivera — UX/UI Designer & Frontend Developer'
+    document.title = 'Patrícia Ferková — UX/UI Designer & Frontend Developer'
 
     const setMeta = (attrs: Record<string, string>) => {
       const existing = document.querySelector(
@@ -22,12 +22,12 @@ describe('SEO Meta Tags', () => {
       document.head.appendChild(meta)
     }
 
-    setMeta({ name: 'description', content: 'Portfolio of Alex Rivera, a UX/UI Designer and Frontend Developer who turns complex problems into intuitive, beautiful digital experiences.' })
-    setMeta({ property: 'og:title', content: 'Alex Rivera — UX/UI Designer & Frontend Developer' })
-    setMeta({ property: 'og:description', content: 'Portfolio of Alex Rivera, a UX/UI Designer and Frontend Developer who turns complex problems into intuitive, beautiful digital experiences.' })
-    setMeta({ property: 'og:image', content: 'https://alexrivera.design/og-image.webp' })
+    setMeta({ name: 'description', content: 'Portfolio of Patrícia Ferková, a UX/UI Designer and Frontend Developer who turns complex problems into intuitive, beautiful digital experiences.' })
+    setMeta({ property: 'og:title', content: 'Patrícia Ferková — UX/UI Designer & Frontend Developer' })
+    setMeta({ property: 'og:description', content: 'Portfolio of Patrícia Ferková, a UX/UI Designer and Frontend Developer who turns complex problems into intuitive, beautiful digital experiences.' })
+    setMeta({ property: 'og:image', content: 'https://patriciaferkova.design/og-image.webp' })
     setMeta({ property: 'og:type', content: 'website' })
-    setMeta({ property: 'og:url', content: 'https://alexrivera.design/' })
+    setMeta({ property: 'og:url', content: 'https://patriciaferkova.design/' })
   })
 
   it('has a non-empty document title', () => {
@@ -36,7 +36,7 @@ describe('SEO Meta Tags', () => {
   })
 
   it('title contains the designer name', () => {
-    expect(document.title).toContain('Alex Rivera')
+    expect(document.title).toContain('Patrícia Ferková')
   })
 
   it('has a meta description tag', () => {

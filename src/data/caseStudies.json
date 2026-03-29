@@ -9,30 +9,29 @@
     "problemStatement": "Users were abandoning the dashboard within 2 minutes due to information overload. Key financial metrics were buried under layers of navigation, causing frustration and missed insights.",
     "processNarrative": [
       {
-        "phase": "research",
-        "description": "Conducted 12 user interviews and analyzed session recordings to identify pain points. Created affinity maps and journey maps to synthesize findings.",
-        "assets": [
-          "/images/fintrack-research-1.webp",
-          "/images/fintrack-affinity.webp"
-        ]
+        "phase": "goals",
+        "description": "Reduce cognitive load and surface key financial metrics within the first 30 seconds of use. Improve task completion rate by at least 30%.",
+        "assets": ["/images/fintrack-research-1.webp", "/images/fintrack-affinity.webp"]
       },
       {
-        "phase": "wireframes",
+        "phase": "solution",
         "description": "Sketched 30+ layout concepts, narrowed to 3 high-fidelity wireframe directions. Ran A/B preference tests with 50 participants.",
-        "assets": [
-          "/images/fintrack-wireframe-1.webp",
-          "/images/fintrack-wireframe-2.webp"
-        ]
+        "assets": ["/images/fintrack-wireframe-1.webp", "/images/fintrack-wireframe-2.webp"]
       },
       {
-        "phase": "ui",
+        "phase": "flow",
         "description": "Developed a clean design system with a data-forward color palette. Prioritized progressive disclosure to surface key metrics first.",
         "assets": ["/images/fintrack-ui-1.webp", "/images/fintrack-ui-2.webp"]
       },
       {
-        "phase": "implementation",
+        "phase": "system",
         "description": "Built the dashboard in React with recharts for data visualization. Implemented keyboard navigation and ARIA roles for full accessibility.",
         "assets": ["/images/fintrack-impl-1.webp"]
+      },
+      {
+        "phase": "learnings",
+        "description": "Progressive disclosure dramatically reduced cognitive load. Users found key metrics 2.5x faster. Early A/B testing saved weeks of rework.",
+        "assets": []
       }
     ],
     "beforeAfterVisuals": [
@@ -48,7 +47,7 @@
       "Accessibility score: WCAG 2.1 AA compliant"
     ],
     "codeView": {
-      "repoUrl": "https://github.com/alexrivera/fintrack-dashboard",
+      "repoUrl": "https://github.com/PatFerko/fintrack-dashboard",
       "techStack": ["React", "TypeScript", "recharts", "Tailwind CSS"],
       "highlights": [
         "Custom SVG sparkline components with animation",
@@ -67,32 +66,29 @@
     "problemStatement": "Hotel teams lack a simple way to manage shift swaps and schedule changes, leading to miscommunication, understaffed shifts, and frustration for both staff and managers.",
     "processNarrative": [
       {
-        "phase": "research",
+        "phase": "goals",
         "description": "Design a flexible system that enables staff to easily view, manage, and swap shifts while ensuring reliable coverage for managers.",
         "assets": ["/images/wellness-research-1.webp"]
       },
       {
-        "phase": "wireframes",
+        "phase": "solution",
         "description": "A digital shift management system that simplifies scheduling by allowing staff to view shifts, request swaps, and set availability, while enabling managers to approve changes and maintain proper staffing through automated validation.",
-        "assets": [
-          "/images/wellness-wireframe-1.webp",
-          "/images/wellness-wireframe-2.webp"
-        ]
+        "assets": ["/images/wellness-wireframe-1.webp", "/images/wellness-wireframe-2.webp"]
       },
       {
-        "phase": "ui",
+        "phase": "flow",
         "description": "Created a warm, earthy color palette with soft gradients. Designed a custom illustration system and micro-animation library for emotional resonance.",
         "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
       },
       {
-        "phase": "implementation",
+        "phase": "system",
         "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
         "assets": ["/images/wellness-impl-1.webp"]
       },
       {
-        "phase": "implementation",
-        "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
-        "assets": ["/images/wellness-impl-1.webp"]
+        "phase": "learnings",
+        "description": "Automated validation caught scheduling conflicts early. The swap approval flow reduced manager overhead by 40%.",
+        "assets": []
       }
     ],
     "beforeAfterVisuals": [
@@ -108,7 +104,7 @@
       "Featured in App Store 'Apps We Love'"
     ],
     "codeView": {
-      "repoUrl": "https://github.com/alexrivera/wellness-app",
+      "repoUrl": "https://github.com/PatFerko/wellness-app",
       "techStack": ["SwiftUI", "Combine", "Core Data", "HealthKit"],
       "highlights": [
         "Custom SwiftUI animation engine for mood tracking",
@@ -117,40 +113,39 @@
       ]
     }
   },
-
   {
     "id": "design-system",
     "title": "Orbit Design System",
     "shortDescription": "Built a cross-platform design system adopted by 8 product teams, reducing design-to-dev handoff time by 60%.",
-    "tags": [
-      "Design Systems",
-      "Component Library",
-      "Documentation",
-      "Storybook"
-    ],
+    "tags": ["Design Systems", "Component Library", "Documentation", "Storybook"],
     "thumbnail": "/images/orbit-thumb.webp",
     "thumbnailIsVideo": false,
     "problemStatement": "Eight product teams were building inconsistent UIs independently, causing brand fragmentation and duplicated engineering effort. A unified system was needed to scale design quality.",
     "processNarrative": [
       {
-        "phase": "research",
+        "phase": "goals",
         "description": "Audited 400+ UI components across 8 products. Identified 23 distinct button variants and 15 different color systems. Interviewed 16 designers and 12 engineers.",
         "assets": ["/images/orbit-audit-1.webp", "/images/orbit-audit-2.webp"]
       },
       {
-        "phase": "wireframes",
+        "phase": "solution",
         "description": "Defined token architecture (color, spacing, typography, motion). Created component API specifications with prop tables and usage guidelines.",
         "assets": ["/images/orbit-tokens-1.webp"]
       },
       {
-        "phase": "ui",
+        "phase": "flow",
         "description": "Designed 120+ components in Figma with auto-layout, variants, and interactive states. Established a contribution model for team adoption.",
         "assets": ["/images/orbit-ui-1.webp", "/images/orbit-ui-2.webp"]
       },
       {
-        "phase": "implementation",
+        "phase": "system",
         "description": "Built the component library in React + TypeScript with Storybook documentation. Published to npm with semantic versioning and automated visual regression tests.",
         "assets": ["/images/orbit-impl-1.webp"]
+      },
+      {
+        "phase": "learnings",
+        "description": "A contribution model was key to adoption. Teams that co-owned components adopted the system 3x faster than those who only consumed it.",
+        "assets": []
       }
     ],
     "beforeAfterVisuals": [
@@ -166,7 +161,7 @@
       "98% Storybook component coverage"
     ],
     "codeView": {
-      "repoUrl": "https://github.com/alexrivera/orbit-design-system",
+      "repoUrl": "https://github.com/PatFerko/orbit-design-system",
       "techStack": ["React", "TypeScript", "Storybook", "Chromatic", "Rollup"],
       "highlights": [
         "Design token pipeline from Figma to CSS variables",

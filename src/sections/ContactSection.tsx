@@ -19,12 +19,18 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
 
-// ── Mock form submission ──────────────────────────────────────────────────────
+// ── Formspree submission (no server required) ─────────────────────────────────
+// Replace with your Formspree form ID after creating one at https://formspree.io
+// e.g. const FORMSPREE_URL = 'https://formspree.io/f/xyzabcde';
+const FORMSPREE_URL = 'https://formspree.io/f/xnjopwzq';
 
-async function submitForm(_data: Omit<ContactFormData, 'honeypot'>): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), 1000);
+async function submitForm(data: Omit<ContactFormData, 'honeypot'>): Promise<void> {
+  const res = await fetch(FORMSPREE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(data),
   });
+  if (!res.ok) throw new Error(`Formspree error: ${res.status}`);
 }
 
 // ── Success animation ─────────────────────────────────────────────────────────
@@ -325,11 +331,11 @@ export function ContactSection() {
         <p className={`mt-8 text-center text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
           Prefer email?{' '}
           <a
-            href="mailto:hello@alexrivera.design"
+            href="mailto:pat.ferkova@gmail.com"
             className={`font-medium underline underline-offset-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded
               ${isDark ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-700'}`}
           >
-            hello@alexrivera.design
+            pat.ferkova@gmail.com
           </a>
         </p>
       </div>

@@ -58,7 +58,7 @@ function App() {
         )} */}
       </main>
       <footer className="py-6 text-center text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        © {new Date().getFullYear()} Alex Rivera. All rights reserved.
+        © {new Date().getFullYear()} Patrícia Ferková. All rights reserved.
       </footer>
     </ThemeProvider>
   );

@@ -57,8 +57,8 @@ describe('ContactSection', () => {
 
   it('renders direct email link as alternative contact', () => {
     renderContact();
-    const emailLink = screen.getByRole('link', { name: /hello@alexrivera\.design/i });
-    expect(emailLink).toHaveAttribute('href', 'mailto:hello@alexrivera.design');
+    const emailLink = screen.getByRole('link', { name: /pat\.ferkova@gmail\.com/i });
+    expect(emailLink).toHaveAttribute('href', 'mailto:pat.ferkova@gmail.com');
   });
 
   it('shows inline error for empty name without clearing other fields', async () => {
@@ -146,7 +146,7 @@ describe('ContactSection', () => {
     const user = userEvent.setup();
     renderContact();
 
-    await user.type(screen.getByLabelText('Name'), 'Alex Rivera');
+    await user.type(screen.getByLabelText('Name'), 'Patrícia Ferková');
     await user.type(screen.getByLabelText('Email'), 'alex@example.com');
     await user.type(screen.getByLabelText('Message'), 'Hello, I have a project for you!');
 

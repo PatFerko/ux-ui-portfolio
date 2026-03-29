@@ -243,7 +243,7 @@ function StaticFallback({ githubLink, isDark }: StaticFallbackProps) {
 
 // ── SocialSection ─────────────────────────────────────────────────────────────
 
-const GITHUB_USERNAME = 'alexrivera';
+const GITHUB_USERNAME = 'PatFerko';
 
 export function SocialSection() {
   const { theme } = useTheme();

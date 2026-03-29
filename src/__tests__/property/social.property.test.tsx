@@ -134,7 +134,7 @@ describe('Property 11: Featured repo cards contain name and description', () => 
       fc.asyncProperty(
         fc.array(repoArb, { minLength: 1, maxLength: 6 }),
         async (repos) => {
-          const mockUser = { public_repos: 10, html_url: 'https://github.com/alexrivera' };
+          const mockUser = { public_repos: 10, html_url: 'https://github.com/PatFerko' };
 
           let callCount = 0;
           vi.stubGlobal(

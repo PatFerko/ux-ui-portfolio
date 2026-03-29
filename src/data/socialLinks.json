@@ -1,17 +1,17 @@
 [
   {
     "platform": "GitHub",
-    "url": "https://github.com/alexrivera",
-    "ariaLabel": "Visit Alex Rivera's GitHub profile"
+    "url": "https://github.com/PatFerko",
+    "ariaLabel": "Visit Patrícia Ferková's GitHub profile"
   },
   {
     "platform": "LinkedIn",
-    "url": "https://linkedin.com/in/alexrivera-design",
-    "ariaLabel": "Visit Alex Rivera's LinkedIn profile"
+    "url": "https://linkedin.com/in/patricia-ferkova",
+    "ariaLabel": "Visit Patrícia Ferková's LinkedIn profile"
   },
   {
     "platform": "Dribbble",
-    "url": "https://dribbble.com/alexrivera",
-    "ariaLabel": "Visit Alex Rivera's Dribbble portfolio"
+    "url": "https://dribbble.com/patferkova",
+    "ariaLabel": "Visit Patrícia Ferková's Dribbble portfolio"
   }
 ]

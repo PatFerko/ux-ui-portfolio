@@ -16,17 +16,19 @@ interface CaseStudyModalProps {
 }
 
 const PHASE_LABELS: Record<string, string> = {
-  research: 'Research',
-  wireframes: 'Wireframes',
-  ui: 'UI Design',
-  implementation: 'Implementation',
+  goals: 'Goals',
+  solution: 'Solution',
+  flow: 'User Flow',
+  system: 'System Logic',
+  learnings: 'Learnings',
 };
 
 const PHASE_ICONS: Record<string, string> = {
-  research: '🔍',
-  wireframes: '✏️',
-  ui: '🎨',
-  implementation: '⚙️',
+  goals: '🎯',
+  solution: '�',
+  flow: '🔄',
+  system: '⚙️',
+  learnings: '📝',
 };
 
 export function CaseStudyModal({ study, isOpen, onClose, interactiveCaseStudy = false, prototypeScreens = [] }: CaseStudyModalProps) {
@@ -103,7 +105,7 @@ export function CaseStudyModal({ study, isOpen, onClose, interactiveCaseStudy = 
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : {
         hidden: { opacity: 0, y: 32, scale: 0.97 },
-        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3, ease: 'easeOut' as const } },
       };
 
   return (
