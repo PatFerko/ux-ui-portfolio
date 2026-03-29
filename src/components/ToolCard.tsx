@@ -51,20 +51,6 @@ export function ToolCard({ tool }: ToolCardProps) {
           {tool.name}
         </span>
       </div>
-
-      {/* Hover-reveal description */}
-      <motion.div
-        className={`absolute inset-0 rounded-xl flex items-center justify-center p-3 text-center
-          ${isDark ? 'bg-gray-900/95' : 'bg-indigo-50/95'}`}
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.2 }}
-        aria-hidden="true"
-      >
-        <p className={`text-xs leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-          {tool.description}
-        </p>
-      </motion.div>
     </motion.div>
   );
 }

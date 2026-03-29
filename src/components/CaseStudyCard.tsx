@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { LazyImage } from './LazyImage';
+import { LazyVideo } from './LazyVideo';
 
 export interface CaseStudy {
   id: string;
@@ -74,9 +76,8 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
       {/* Thumbnail */}
       <div className="relative h-44 overflow-hidden bg-gray-100 dark:bg-gray-700">
         {study.thumbnailIsVideo ? (
-          <video
+          <LazyVideo
             src={study.thumbnail}
-            data-src={study.thumbnail}
             className="w-full h-full object-cover"
             autoPlay
             loop
@@ -85,12 +86,10 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
             aria-label={`${study.title} preview video`}
           />
         ) : (
-          <img
+          <LazyImage
             src={study.thumbnail}
-            data-src={study.thumbnail}
             alt={`${study.title} thumbnail`}
             className="w-full h-full object-cover"
-            loading="lazy"
           />
         )}
 

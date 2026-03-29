@@ -237,7 +237,7 @@ export function SkillsSection() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-10 text-center">
+        {/* <div className="mb-10 text-center">
           <p className={`text-sm font-semibold tracking-widest uppercase mb-2 ${isDark ? 'text-indigo-400' : 'text-indigo-500'}`}>
             Expertise
           </p>
@@ -250,43 +250,14 @@ export function SkillsSection() {
           <p className={`mt-3 max-w-xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
             A hybrid skill set spanning research, visual design, and production-ready frontend code.
           </p>
-        </div>
+        </div> */}
 
         {/* Mindset Toggle */}
-        <div className="flex justify-center mb-10">
+        {/* <div className="flex justify-center mb-10">
           <MindsetToggle mindset={mindset} onChange={setMindset} isDark={isDark} />
-        </div>
+        </div> */}
 
         {/* Skill categories */}
-        <motion.div
-          key={mindset}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16"
-        >
-          {visibleCategories.map((cat) => (
-            <div
-              key={cat.name}
-              className={`rounded-2xl p-6 ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-sm`}
-            >
-              <h3 className={`text-lg font-semibold mb-5 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                {cat.name}
-              </h3>
-
-              {/* Radar chart on md+, progress bars always visible on mobile */}
-              <div className="hidden md:block mb-6">
-                <RadarChart skills={cat.skills} isDark={isDark} />
-              </div>
-
-              <ProgressBars
-                skills={cat.skills}
-                isDark={isDark}
-                animate={!prefersReducedMotion}
-              />
-            </div>
-          ))}
-        </motion.div>
 
         {/* Tool stack */}
         <div>

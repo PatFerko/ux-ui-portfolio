@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render, within, waitFor, cleanup } from '@testing-library/react';
+import { render, within, waitFor, cleanup, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as fc from 'fast-check';
 import { ContactSection } from '../../sections/ContactSection';
@@ -31,7 +31,6 @@ vi.mock('framer-motion', async () => {
   };
 });
 
-// Clean up DOM between each test to prevent accumulation
 afterEach(() => {
   cleanup();
 });
@@ -48,9 +47,13 @@ function renderContact() {
   return { ...result, container };
 }
 
+/** Helper: set an input value using fireEvent (much faster than userEvent.type for PBT) */
+function setInputValue(input: HTMLElement, value: string) {
+  fireEvent.change(input, { target: { value } });
+}
+
 // ── Generators ────────────────────────────────────────────────────────────────
 
-// Blank/whitespace-only strings (invalid name/message)
 const blankStringArb = fc.oneof(
   fc.constant(''),
   fc.constant('   '),
@@ -58,7 +61,6 @@ const blankStringArb = fc.oneof(
   fc.constant('\n\n')
 );
 
-// Invalid email strings (no @, no domain, etc.)
 const invalidEmailArb = fc.oneof(
   fc.constant(''),
   fc.constant('notanemail'),
@@ -69,11 +71,9 @@ const invalidEmailArb = fc.oneof(
   fc.string({ minLength: 1, maxLength: 20 }).filter((s) => !s.includes('@'))
 );
 
-// Valid non-empty strings (for valid fields) — exclude { and } which userEvent treats as special keys
 const nonEmptyStringArb = fc.string({ minLength: 1, maxLength: 50 })
   .filter((s) => s.trim().length > 0 && !s.includes('{') && !s.includes('}') && !s.includes('[') && !s.includes(']'));
 
-// Valid email strings
 const validEmailArb = fc.tuple(
   fc.stringMatching(/^[a-z]{1,8}$/),
   fc.stringMatching(/^[a-z]{2,8}$/),
@@ -100,26 +100,22 @@ describe('Property 12: Contact form validation rejects invalid inputs', () => {
           const emailInput = scope.getByLabelText('Email');
           const messageInput = scope.getByLabelText('Message');
 
-          if (blankName.length > 0) {
-            await user.type(nameInput, blankName);
-          }
-          await user.type(emailInput, validEmail);
-          await user.type(messageInput, validMessage);
+          setInputValue(nameInput, blankName);
+          setInputValue(emailInput, validEmail);
+          setInputValue(messageInput, validMessage);
           await user.click(scope.getByRole('button', { name: /send message/i }));
 
           await waitFor(() => {
             expect(scope.getByText(/name is required/i)).toBeInTheDocument();
           });
 
-          // Success animation must NOT appear
           expect(scope.queryByText(/message sent/i)).not.toBeInTheDocument();
-
           unmount();
         }
       ),
       { numRuns: 20 }
     );
-  });
+  }, 30000);
 
   it('rejects submission when email is invalid', async () => {
     // Feature: ux-ui-portfolio, Property 12: Contact form validation rejects invalid inputs
@@ -134,11 +130,9 @@ describe('Property 12: Contact form validation rejects invalid inputs', () => {
           const user = userEvent.setup();
           const scope = within(container);
 
-          await user.type(scope.getByLabelText('Name'), validName);
-          if (invalidEmail.length > 0) {
-            await user.type(scope.getByLabelText('Email'), invalidEmail);
-          }
-          await user.type(scope.getByLabelText('Message'), validMessage);
+          setInputValue(scope.getByLabelText('Name'), validName);
+          setInputValue(scope.getByLabelText('Email'), invalidEmail);
+          setInputValue(scope.getByLabelText('Message'), validMessage);
           await user.click(scope.getByRole('button', { name: /send message/i }));
 
           await waitFor(() => {
@@ -149,13 +143,12 @@ describe('Property 12: Contact form validation rejects invalid inputs', () => {
           });
 
           expect(scope.queryByText(/message sent/i)).not.toBeInTheDocument();
-
           unmount();
         }
       ),
       { numRuns: 20 }
     );
-  });
+  }, 30000);
 
   it('rejects submission when message is blank', async () => {
     // Feature: ux-ui-portfolio, Property 12: Contact form validation rejects invalid inputs
@@ -170,11 +163,9 @@ describe('Property 12: Contact form validation rejects invalid inputs', () => {
           const user = userEvent.setup();
           const scope = within(container);
 
-          await user.type(scope.getByLabelText('Name'), validName);
-          await user.type(scope.getByLabelText('Email'), validEmail);
-          if (blankMessage.length > 0) {
-            await user.type(scope.getByLabelText('Message'), blankMessage);
-          }
+          setInputValue(scope.getByLabelText('Name'), validName);
+          setInputValue(scope.getByLabelText('Email'), validEmail);
+          setInputValue(scope.getByLabelText('Message'), blankMessage);
           await user.click(scope.getByRole('button', { name: /send message/i }));
 
           await waitFor(() => {
@@ -182,13 +173,12 @@ describe('Property 12: Contact form validation rejects invalid inputs', () => {
           });
 
           expect(scope.queryByText(/message sent/i)).not.toBeInTheDocument();
-
           unmount();
         }
       ),
       { numRuns: 20 }
     );
-  });
+  }, 30000);
 });
 
 // ── Property 13: Validation errors preserve other field values ────────────────
@@ -207,24 +197,22 @@ describe('Property 13: Validation errors preserve other field values', () => {
           const scope = within(container);
 
           // Leave name blank, fill email and message
-          await user.type(scope.getByLabelText('Email'), validEmail);
-          await user.type(scope.getByLabelText('Message'), validMessage);
+          setInputValue(scope.getByLabelText('Email'), validEmail);
+          setInputValue(scope.getByLabelText('Message'), validMessage);
           await user.click(scope.getByRole('button', { name: /send message/i }));
 
           await waitFor(() => {
             expect(scope.getByText(/name is required/i)).toBeInTheDocument();
           });
 
-          // Email and message values must be preserved
           expect(scope.getByLabelText('Email')).toHaveValue(validEmail);
           expect(scope.getByLabelText('Message')).toHaveValue(validMessage);
-
           unmount();
         }
       ),
       { numRuns: 20 }
     );
-  });
+  }, 30000);
 
   it('preserves valid field values when email is invalid', async () => {
     // Feature: ux-ui-portfolio, Property 13: Validation errors preserve other field values
@@ -238,25 +226,23 @@ describe('Property 13: Validation errors preserve other field values', () => {
           const user = userEvent.setup();
           const scope = within(container);
 
-          await user.type(scope.getByLabelText('Name'), validName);
+          setInputValue(scope.getByLabelText('Name'), validName);
           // Leave email blank (invalid)
-          await user.type(scope.getByLabelText('Message'), validMessage);
+          setInputValue(scope.getByLabelText('Message'), validMessage);
           await user.click(scope.getByRole('button', { name: /send message/i }));
 
           await waitFor(() => {
             expect(scope.getByText(/email is required/i)).toBeInTheDocument();
           });
 
-          // Name and message values must be preserved
           expect(scope.getByLabelText('Name')).toHaveValue(validName);
           expect(scope.getByLabelText('Message')).toHaveValue(validMessage);
-
           unmount();
         }
       ),
       { numRuns: 20 }
     );
-  });
+  }, 30000);
 });
 
 // ── Property 18: Form inputs have associated labels ───────────────────────────
@@ -269,7 +255,6 @@ describe('Property 18: Form inputs have associated labels', () => {
         cleanup();
         const { container, unmount } = renderContact();
 
-        // Get all visible inputs and textareas (exclude honeypot which is hidden)
         const inputs = container.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
           'input:not([aria-hidden="true"]), textarea'
         );

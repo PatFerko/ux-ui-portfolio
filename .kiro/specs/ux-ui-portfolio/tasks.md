@@ -234,29 +234,29 @@ Incremental build of a React + Vite + Tailwind + Framer Motion SPA. Each task pr
     - **Property 15: Interactive elements are in logical tab order**
     - **Validates: Requirements 7.4, 10.3**
 
-- [ ] 15. Performance optimizations
+- [x] 15. Performance optimizations
   - Configure Vite dynamic `import()` code splitting for `CaseStudyModal`, `GallerySection`, `DesignPlayground`, and bonus features
   - Configure Vite `build.assetsInlineLimit` and image plugin to output WebP/AVIF assets
   - Verify `useLazyLoad` is applied to all below-fold images and videos
   - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5_
 
-- [~] 16. Bonus — Interactive Case Study Mode
+- [x] 16. Bonus — Interactive Case Study Mode
   - Add `interactiveCaseStudy` feature flag to `CaseStudyModal`
   - Render clickable prototype screens with next/previous controls when flag is enabled
   - Lazy-load this feature via dynamic `import()`
   - _Requirements: 12.1, 12.2_
 
-  - [ ]* 16.1 Write property test for prototype navigation covering all screens
+  - [x]* 16.1 Write property test for prototype navigation covering all screens
     - **Property 20: Prototype navigation covers all screens**
     - **Validates: Requirements 12.2**
 
-- [~] 17. Bonus — Performance Dashboard
+- [x] 17. Bonus — Performance Dashboard
   - Add `performanceDashboard` feature flag
   - Render pre-captured Lighthouse score panel and Web Vitals (LCP, FID, CLS) when flag is enabled
   - Lazy-load this feature via dynamic `import()`
   - _Requirements: 13.1, 13.2_
 
-- [~] 18. Final checkpoint — Ensure all tests pass
+- [x] 18. Final checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

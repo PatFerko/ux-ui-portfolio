@@ -1,11 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, lazy, Suspense, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import type { CaseStudy } from './CaseStudyCard';
+import type { PrototypeScreen } from './InteractiveCaseStudy';
+
+const LazyInteractiveCaseStudy = lazy(() =>
+  import('./InteractiveCaseStudy').then((m) => ({ default: m.InteractiveCaseStudy }))
+);
 
 interface CaseStudyModalProps {
   study: CaseStudy | null;
   isOpen: boolean;
   onClose: () => void;
+  interactiveCaseStudy?: boolean;
+  prototypeScreens?: PrototypeScreen[];
 }
 
 const PHASE_LABELS: Record<string, string> = {
@@ -22,10 +29,11 @@ const PHASE_ICONS: Record<string, string> = {
   implementation: '⚙️',
 };
 
-export function CaseStudyModal({ study, isOpen, onClose }: CaseStudyModalProps) {
+export function CaseStudyModal({ study, isOpen, onClose, interactiveCaseStudy = false, prototypeScreens = [] }: CaseStudyModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [interactiveLoaded, setInteractiveLoaded] = useState(false);
 
   // Open/close native dialog
   useEffect(() => {
@@ -302,6 +310,34 @@ export function CaseStudyModal({ study, isOpen, onClose }: CaseStudyModalProps) 
                           View Repository →
                         </a>
                       </div>
+                    </section>
+                  )}
+
+                  {/* Interactive Case Study Prototype — lazy-loaded when feature flag is enabled */}
+                  {interactiveCaseStudy && prototypeScreens.length > 0 && (
+                    <section aria-labelledby="prototype-heading">
+                      <h3 id="prototype-heading" className="text-sm font-semibold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 mb-3">
+                        Interactive Prototype
+                      </h3>
+                      {!interactiveLoaded && (
+                        <button
+                          onClick={() => setInteractiveLoaded(true)}
+                          className="w-full py-3 rounded-xl text-sm font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                        >
+                          Launch Interactive Prototype
+                        </button>
+                      )}
+                      {interactiveLoaded && (
+                        <Suspense
+                          fallback={
+                            <div className="py-8 flex items-center justify-center text-gray-400 dark:text-gray-600">
+                              <span className="animate-pulse">Loading prototype…</span>
+                            </div>
+                          }
+                        >
+                          <LazyInteractiveCaseStudy screens={prototypeScreens} />
+                        </Suspense>
+                      )}
                     </section>
                   )}
                 </div>
