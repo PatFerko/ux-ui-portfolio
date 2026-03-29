@@ -11,12 +11,18 @@
       {
         "phase": "research",
         "description": "Conducted 12 user interviews and analyzed session recordings to identify pain points. Created affinity maps and journey maps to synthesize findings.",
-        "assets": ["/images/fintrack-research-1.webp", "/images/fintrack-affinity.webp"]
+        "assets": [
+          "/images/fintrack-research-1.webp",
+          "/images/fintrack-affinity.webp"
+        ]
       },
       {
         "phase": "wireframes",
         "description": "Sketched 30+ layout concepts, narrowed to 3 high-fidelity wireframe directions. Ran A/B preference tests with 50 participants.",
-        "assets": ["/images/fintrack-wireframe-1.webp", "/images/fintrack-wireframe-2.webp"]
+        "assets": [
+          "/images/fintrack-wireframe-1.webp",
+          "/images/fintrack-wireframe-2.webp"
+        ]
       },
       {
         "phase": "ui",
@@ -53,27 +59,35 @@
   },
   {
     "id": "health-app",
-    "title": "Wellness Companion App",
-    "shortDescription": "Designed a mental wellness app from zero to launch, achieving 4.8★ App Store rating in the first month.",
+    "title": "Shift Management System",
+    "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
     "tags": ["Mobile UX", "Product Design", "User Testing", "iOS"],
     "thumbnail": "/images/wellness-thumb.webp",
     "thumbnailIsVideo": false,
-    "problemStatement": "Existing wellness apps felt clinical and transactional. Users needed a companion that felt warm, personal, and non-judgmental to build sustainable habits.",
+    "problemStatement": "Hotel teams lack a simple way to manage shift swaps and schedule changes, leading to miscommunication, understaffed shifts, and frustration for both staff and managers.",
     "processNarrative": [
       {
         "phase": "research",
-        "description": "Ran diary studies with 20 participants over 2 weeks to understand daily wellness routines and emotional triggers. Synthesized insights into 4 user personas.",
+        "description": "Design a flexible system that enables staff to easily view, manage, and swap shifts while ensuring reliable coverage for managers.",
         "assets": ["/images/wellness-research-1.webp"]
       },
       {
         "phase": "wireframes",
-        "description": "Explored conversational UI patterns and card-based layouts. Prototyped 5 onboarding flows and tested with 15 users to optimize first-run experience.",
-        "assets": ["/images/wellness-wireframe-1.webp", "/images/wellness-wireframe-2.webp"]
+        "description": "A digital shift management system that simplifies scheduling by allowing staff to view shifts, request swaps, and set availability, while enabling managers to approve changes and maintain proper staffing through automated validation.",
+        "assets": [
+          "/images/wellness-wireframe-1.webp",
+          "/images/wellness-wireframe-2.webp"
+        ]
       },
       {
         "phase": "ui",
         "description": "Created a warm, earthy color palette with soft gradients. Designed a custom illustration system and micro-animation library for emotional resonance.",
         "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
+      },
+      {
+        "phase": "implementation",
+        "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
+        "assets": ["/images/wellness-impl-1.webp"]
       },
       {
         "phase": "implementation",
@@ -103,11 +117,17 @@
       ]
     }
   },
+
   {
     "id": "design-system",
     "title": "Orbit Design System",
     "shortDescription": "Built a cross-platform design system adopted by 8 product teams, reducing design-to-dev handoff time by 60%.",
-    "tags": ["Design Systems", "Component Library", "Documentation", "Storybook"],
+    "tags": [
+      "Design Systems",
+      "Component Library",
+      "Documentation",
+      "Storybook"
+    ],
     "thumbnail": "/images/orbit-thumb.webp",
     "thumbnailIsVideo": false,
     "problemStatement": "Eight product teams were building inconsistent UIs independently, causing brand fragmentation and duplicated engineering effort. A unified system was needed to scale design quality.",
