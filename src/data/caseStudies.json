@@ -11,12 +11,18 @@
       {
         "phase": "goals",
         "description": "Reduce cognitive load and surface key financial metrics within the first 30 seconds of use. Improve task completion rate by at least 30%.",
-        "assets": ["/images/fintrack-research-1.webp", "/images/fintrack-affinity.webp"]
+        "assets": [
+          "/images/fintrack-research-1.webp",
+          "/images/fintrack-affinity.webp"
+        ]
       },
       {
         "phase": "solution",
         "description": "Sketched 30+ layout concepts, narrowed to 3 high-fidelity wireframe directions. Ran A/B preference tests with 50 participants.",
-        "assets": ["/images/fintrack-wireframe-1.webp", "/images/fintrack-wireframe-2.webp"]
+        "assets": [
+          "/images/fintrack-wireframe-1.webp",
+          "/images/fintrack-wireframe-2.webp"
+        ]
       },
       {
         "phase": "flow",
@@ -73,11 +79,14 @@
       {
         "phase": "solution",
         "description": "A digital shift management system that simplifies scheduling by allowing staff to view shifts, request swaps, and set availability, while enabling managers to approve changes and maintain proper staffing through automated validation.",
-        "assets": ["/images/wellness-wireframe-1.webp", "/images/wellness-wireframe-2.webp"]
+        "assets": [
+          "/images/wellness-wireframe-1.webp",
+          "/images/wellness-wireframe-2.webp"
+        ]
       },
       {
         "phase": "flow",
-        "description": "Created a warm, earthy color palette with soft gradients. Designed a custom illustration system and micro-animation library for emotional resonance.",
+        "description": "Staff view their schedule → request a shift swap → system checks availability and coverage → manager approves (if needed) → schedule updates in real time. If a swap would cause understaffing, the system prevents it or suggests alternatives.",
         "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
       },
       {
@@ -117,7 +126,12 @@
     "id": "design-system",
     "title": "Orbit Design System",
     "shortDescription": "Built a cross-platform design system adopted by 8 product teams, reducing design-to-dev handoff time by 60%.",
-    "tags": ["Design Systems", "Component Library", "Documentation", "Storybook"],
+    "tags": [
+      "Design Systems",
+      "Component Library",
+      "Documentation",
+      "Storybook"
+    ],
     "thumbnail": "/images/orbit-thumb.webp",
     "thumbnailIsVideo": false,
     "problemStatement": "Eight product teams were building inconsistent UIs independently, causing brand fragmentation and duplicated engineering effort. A unified system was needed to scale design quality.",
