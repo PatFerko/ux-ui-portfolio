@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 
 export interface GalleryItemData {
   id: string;
-  type: 'component' | 'motion' | 'branding';
+  type: string;
   src: string;
   alt: string;
   isInteractive: boolean;
