@@ -10,6 +10,7 @@ export interface CaseStudy {
   tags: string[];
   thumbnail: string;
   thumbnailIsVideo: boolean;
+  introduction?: string;
   problemStatement: string;
   processNarrative: ProcessStep[];
   beforeAfterVisuals: { before: string; after: string }[];
@@ -21,6 +22,7 @@ export interface ProcessStep {
   phase: 'goals' | 'solution' | 'flow' | 'wireframes_final' | 'wireframes' | 'system' | 'learnings';
   description: string;
   assets: string[];
+  keyDecisions?: string[];
 }
 
 export interface CodeViewContent {
@@ -130,7 +132,7 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
               }`}
               aria-pressed={isCodeView}
             >
-              Code
+              Tools
             </button>
           </div>
         )}

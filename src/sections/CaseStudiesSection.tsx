@@ -41,17 +41,14 @@ export function CaseStudiesSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 text-center">
-          <p className="text-sm font-semibold tracking-widest text-indigo-500 dark:text-indigo-400 uppercase mb-2">
-            Selected Work
-          </p>
           <h2
             id="work-heading"
             className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white"
           >
-            Case Studies
+            Selected Work
           </h2>
           <p className="mt-3 text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            End-to-end projects spanning research, design, and implementation.
+            Personal projects inspired by real-world experience...
           </p>
         </div>
 

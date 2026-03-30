@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { id: 'hero', label: 'Home' },
   { id: 'work', label: 'Work' },
   { id: 'gallery', label: 'Gallery' },
-  { id: 'skills', label: 'Skills' },
   { id: 'social', label: 'Social' },
   { id: 'contact', label: 'Contact' },
 ] as const;

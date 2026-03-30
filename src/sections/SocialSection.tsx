@@ -314,7 +314,7 @@ export function SocialSection() {
             Find Me Online
           </h2>
           <p className={`mt-3 max-w-xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Open to new opportunities, collaborations, and conversations.
+            Open to new opportunities and collaborations.
           </p>
         </div>
 

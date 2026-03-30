@@ -16,14 +16,6 @@ const SocialSection = lazy(() =>
   import('./sections/SocialSection').then((m) => ({ default: m.SocialSection }))
 );
 
-// Bonus: Performance Dashboard — lazy-loaded via dynamic import (Requirements 13.1, 13.2)
-const PerformanceDashboard = lazy(() =>
-  import('./components/PerformanceDashboard').then((m) => ({ default: m.PerformanceDashboard }))
-);
-
-/** Feature flag — set to true to display the Performance Dashboard */
-const performanceDashboard = true;
-
 function SectionFallback() {
   return (
     <div className="py-20 flex items-center justify-center text-gray-400 dark:text-gray-600">

@@ -1,200 +1,123 @@
 [
   {
     "id": "fintech-dashboard",
-    "title": "FinTrack Dashboard Redesign",
-    "shortDescription": "Redesigned a complex financial dashboard to reduce cognitive load and improve task completion rates by 40%.",
-    "tags": ["UX Research", "UI Design", "Data Visualization", "Accessibility"],
-    "thumbnail": "/images/fintrack-thumb.webp",
+    "title": "BreakfastFlow: Managing Hotel Breakfast Demand",
+    "shortDescription": "A QR-based booking system that helps hotel guests avoid crowded breakfast hours using real-time availability and flexible booking.",
+    "tags": ["Guest Flow", "Booking Flow", "Real-Time Data", "Service Design"],
+    "thumbnail":"../../../resources/Bft-App/Confirmation-iPh15ProMockup.png",
     "thumbnailIsVideo": false,
-    "problemStatement": "Users were abandoning the dashboard within 2 minutes due to information overload. Key financial metrics were buried under layers of navigation, causing frustration and missed insights.",
+    "introduction": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
+    "problemStatement": "Guests often arrive at hotel breakfast at the same time due to a lack of visibility into occupancy, resulting in overcrowding, long waits, and frustration. At the same time, staff lack tools to manage demand and distribute guest flow effectively.",
     "processNarrative": [
       {
         "phase": "goals",
-        "description": "Reduce cognitive load and surface key financial metrics within the first 30 seconds of use. Improve task completion rate by at least 30%.",
+        "description": "Help guests choose less crowded breakfast times to reduce congestion, while giving staff clear insight into demand and keeping the experience flexible.",
         "assets": [
-          "/images/fintrack-research-1.webp",
-          "/images/fintrack-affinity.webp"
         ]
       },
       {
         "phase": "solution",
-        "description": "Sketched 30+ layout concepts, narrowed to 3 high-fidelity wireframe directions. Ran A/B preference tests with 50 participants.",
+        "description": "I designed a QR-based booking system that reduces breakfast congestion by guiding guests toward less crowded time slots through real-time occupancy insights. Guests can explore availability, see peak times, and optionally reserve a slot while retaining the flexibility to arrive without booking.\n\nTo support decision-making, the system uses clear visual states ({{green:quiet}}, {{orange:steady}}, {{red:full}}) and automatically validates capacity to prevent overcrowding.\n\n**Core concept:** Influence behavior without enforcing it.",
         "assets": [
-          "/images/fintrack-wireframe-1.webp",
-          "/images/fintrack-wireframe-2.webp"
         ]
       },
       {
         "phase": "flow",
-        "description": "Developed a clean design system with a data-forward color palette. Prioritized progressive disclosure to surface key metrics first.",
-        "assets": ["/images/fintrack-ui-1.webp", "/images/fintrack-ui-2.webp"]
+        "description": "Guests access the system via QR code, view breakfast availability, and select a preferred time slot. The system validates availability in real time and suggests alternatives if a slot is unavailable. After booking, guests can manage their reservation by modifying or canceling it as needed.",
+        "assets": ["../../../resources/Bft-App/Flow7.png"]
       },
       {
         "phase": "wireframes_final",
-        "description": "Translated user flows into detailed wireframes and iterated into polished final screens with the full design system applied.",
-        "assets": ["/images/fintrack-wireframe-final-1.webp", "/images/fintrack-wireframe-final-2.webp"]
+        "description": "",
+        "assets": ["../../../resources/Bft-App/Overview-iPhoneMockup.png", "../../../resources/Bft-App/OverviewiPh17Pro.png", "../../../resources/Bft-App/ConfirmationiPh17.png", "../../../resources/Bft-App/Confirmation-iPh15ProMockup.png", "../../../resources/Bft-App/Occupancy-iPh17Pro.png", "../../../resources/Bft-App/BookingSlots-iPh17Pro.png", "../../../resources/Bft-App/BookingSlots-iPh1ProMockup.png", "../../../resources/Bft-App/Wireframe-Overview.png", "../../../resources/Bft-App/Wireframe-BookingSlots.png", "../../../resources/Bft-App/Wireframe-Confirmation.png"]
       },
       {
         "phase": "system",
-        "description": "Built the dashboard in React with recharts for data visualization. Implemented keyboard navigation and ARIA roles for full accessibility.",
-        "assets": ["/images/fintrack-impl-1.webp"]
+        "description": "Time slots that are in the past or already full are shown but cannot be selected. Slot availability is checked in real time before a booking is confirmed. When a selected slot is no longer available, the system recommends another option. Guests can choose between reserving in advance or arriving more flexibly",
+        "assets": []
       },
       {
         "phase": "learnings",
-        "description": "Progressive disclosure dramatically reduced cognitive load. Users found key metrics 2.5x faster. Early A/B testing saved weeks of rework.",
+        "description": "Translated a real-world service problem into a clear and structured digital solution. Shifted from screen-level thinking to system-level design, focusing on flows, rules, and interactions. Used simple visual signals to improve clarity and support user decision-making. Designed for both user needs and operational constraints, balancing flexibility with control. Reduced complexity by prioritizing essential features and keeping the experience intuitive",
         "assets": []
       }
     ],
     "beforeAfterVisuals": [
       {
-        "before": "/images/fintrack-before.webp",
-        "after": "/images/fintrack-after.webp"
+        "before": "../../../resources/Bft-App/Wireframe-Overview.png",
+        "after": "../../../resources/Bft-App/OverviewiPh17Pro.png"
       }
     ],
     "metrics": [
-      "40% increase in task completion rate",
-      "2.5x reduction in time-to-insight",
-      "NPS score improved from 32 to 67",
-      "Accessibility score: WCAG 2.1 AA compliant"
+      "**Visible availability states** make occupancy easy to understand",
+      "**Disabled unavailable slots** reduce mistakes while preserving clarity",
+      "**Alternative suggestions** keep users moving forward instead of interrupting the flow",
+      "**A lightweight booking flow** makes the experience quick and easy to use",
+      "**Flexible booking behavior** balances guest choice with operational needs"
     ],
     "codeView": {
       "repoUrl": "https://github.com/PatFerko/fintrack-dashboard",
-      "techStack": ["React", "TypeScript", "recharts", "Tailwind CSS"],
+      "techStack": ["Figma", "Stitch"],
       "highlights": [
-        "Custom SVG sparkline components with animation",
-        "Virtualized table for 10k+ row datasets",
-        "Real-time WebSocket data integration"
       ]
     }
   },
   {
     "id": "health-app",
-    "title": "Shift Management System",
+    "title": "A Smarter Shift Management System",
     "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
-    "tags": ["Mobile UX", "Product Design", "User Testing", "iOS"],
-    "thumbnail": "/images/wellness-thumb.webp",
+    "tags": ["System Design", "Workflow", "Automation", "Multi-User", "Scheduling"],
+    "thumbnail": "../../../resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
+    "introduction": "While working in gastronomy and hotel environments, I experienced firsthand how shift coordination often relies on manual communication, making it difficult to manage swaps, preferences, and last-minute changes.",
     "problemStatement": "Hotel teams lack a simple way to manage shift swaps and schedule changes, leading to miscommunication, understaffed shifts, and frustration for both staff and managers.",
     "processNarrative": [
       {
         "phase": "goals",
         "description": "Design a flexible system that enables staff to easily view, manage, and swap shifts while ensuring reliable coverage for managers.",
-        "assets": ["/images/wellness-research-1.webp"]
+        "assets": []
       },
       {
         "phase": "solution",
-        "description": "A digital shift management system that simplifies scheduling by allowing staff to view shifts, request swaps, and set availability, while enabling managers to approve changes and maintain proper staffing through automated validation.",
+        "description": "A digital shift management system that simplifies scheduling by allowing staff to view shifts, request swaps, and set availability.\n\nManagers can approve changes and maintain proper staffing through automated validation, reducing miscommunication and manual coordination.",
         "assets": [
-          "/images/wellness-wireframe-1.webp",
-          "/images/wellness-wireframe-2.webp"
         ]
       },
       {
         "phase": "flow",
         "description": "Staff view their schedule → request a shift swap → system checks availability and coverage → manager approves (if needed) → schedule updates in real time. If a swap would cause understaffing, the system prevents it or suggests alternatives.",
-        "assets": ["/images/wellness-ui-1.webp", "/images/wellness-ui-2.webp"]
+        "assets": ["../../../resources/Shift-App/MyFlowFinal.png"]
       },
       {
         "phase": "wireframes",
         "description": "Created low and mid-fidelity wireframes to validate layout and interaction patterns before moving to visual design.",
-        "assets": ["/images/wellness-wireframe-detail-1.webp", "/images/wellness-wireframe-detail-2.webp"]
+        "assets": ["../../../resources/Shift-App/ScheduleMockup.png", "../../../resources/Shift-App/Schedule.png", "../../../resources/Shift-App/ShiftDetail.png", "../../../resources/Shift-App/ChooseSwapPartner.png", "../../../resources/Shift-App/RequestSwap.png", "../../../resources/Shift-App/SystemValidation.png", "../../../resources/Shift-App/SystemValidation-No.png", "../../../resources/Shift-App/Approval.png"]
       },
       {
         "phase": "system",
-        "description": "Collaborated with iOS engineers to implement custom SwiftUI animations. Delivered a comprehensive design system with 200+ components.",
-        "assets": ["/images/wellness-impl-1.webp"]
+        "description": "Shift swaps are validated against staffing requirements to ensure adequate coverage. The system automatically detects and prevents scheduling conflicts. Staff preferences and availability inform shift assignments. Managers can review and override requests when necessary. Confirmed changes are reflected instantly across the schedule",
+        "assets": []
       },
       {
         "phase": "learnings",
-        "description": "Automated validation caught scheduling conflicts early. The swap approval flow reduced manager overhead by 40%.",
+        "description": "Designed for multiple user roles, balancing staff needs with managerial control. Developed a stronger understanding of constraints, validation rules, and edge cases. Simplified complex operational logic into clear and intuitive user flows. Used system feedback to support user decisions and reduce confusion. Balanced flexibility for users with the need for reliable and consistent operations.",
         "assets": []
       }
     ],
-    "beforeAfterVisuals": [
-      {
-        "before": "/images/wellness-before.webp",
-        "after": "/images/wellness-after.webp"
-      }
-    ],
+    "beforeAfterVisuals": [],
     "metrics": [
-      "4.8\u2605 App Store rating (1,200+ reviews)",
-      "68% Day-7 retention rate",
-      "3.2 sessions per day average",
-      "Featured in App Store 'Apps We Love'"
+      "Rule-based interactions ensure only valid shift changes are allowed",
+      "Transparent system feedback helps users understand outcomes and next steps",
+      "Role-based workflows support both staff actions and managerial control",
+      "Visible conflicts make staffing gaps and high-demand shifts easy to identify",
+      "Streamlined interactions reduce complexity and manual coordination"
     ],
     "codeView": {
       "repoUrl": "https://github.com/PatFerko/wellness-app",
-      "techStack": ["SwiftUI", "Combine", "Core Data", "HealthKit"],
+      "techStack": ["Figma"],
       "highlights": [
-        "Custom SwiftUI animation engine for mood tracking",
-        "HealthKit integration for passive data collection",
-        "Offline-first architecture with sync"
+        
       ]
     }
-<<<<<<< Updated upstream
-  },
-  {
-    "id": "design-system",
-    "title": "Orbit Design System",
-    "shortDescription": "Built a cross-platform design system adopted by 8 product teams, reducing design-to-dev handoff time by 60%.",
-    "tags": [
-      "Design Systems",
-      "Component Library",
-      "Documentation",
-      "Storybook"
-    ],
-    "thumbnail": "/images/orbit-thumb.webp",
-    "thumbnailIsVideo": false,
-    "problemStatement": "Eight product teams were building inconsistent UIs independently, causing brand fragmentation and duplicated engineering effort. A unified system was needed to scale design quality.",
-    "processNarrative": [
-      {
-        "phase": "goals",
-        "description": "Audited 400+ UI components across 8 products. Identified 23 distinct button variants and 15 different color systems. Interviewed 16 designers and 12 engineers.",
-        "assets": ["/images/orbit-audit-1.webp", "/images/orbit-audit-2.webp"]
-      },
-      {
-        "phase": "solution",
-        "description": "Defined token architecture (color, spacing, typography, motion). Created component API specifications with prop tables and usage guidelines.",
-        "assets": ["/images/orbit-tokens-1.webp"]
-      },
-      {
-        "phase": "flow",
-        "description": "Designed 120+ components in Figma with auto-layout, variants, and interactive states. Established a contribution model for team adoption.",
-        "assets": ["/images/orbit-ui-1.webp", "/images/orbit-ui-2.webp"]
-      },
-      {
-        "phase": "system",
-        "description": "Built the component library in React + TypeScript with Storybook documentation. Published to npm with semantic versioning and automated visual regression tests.",
-        "assets": ["/images/orbit-impl-1.webp"]
-      },
-      {
-        "phase": "learnings",
-        "description": "A contribution model was key to adoption. Teams that co-owned components adopted the system 3x faster than those who only consumed it.",
-        "assets": []
-      }
-    ],
-    "beforeAfterVisuals": [
-      {
-        "before": "/images/orbit-before.webp",
-        "after": "/images/orbit-after.webp"
-      }
-    ],
-    "metrics": [
-      "60% reduction in design-to-dev handoff time",
-      "120+ reusable components",
-      "8 product teams adopted within 3 months",
-      "98% Storybook component coverage"
-    ],
-    "codeView": {
-      "repoUrl": "https://github.com/PatFerko/orbit-design-system",
-      "techStack": ["React", "TypeScript", "Storybook", "Chromatic", "Rollup"],
-      "highlights": [
-        "Design token pipeline from Figma to CSS variables",
-        "Automated visual regression testing with Chromatic",
-        "Tree-shakeable ESM bundle under 50kb gzipped"
-      ]
-    }
-=======
->>>>>>> Stashed changes
   }
 ]

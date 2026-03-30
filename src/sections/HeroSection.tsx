@@ -86,7 +86,7 @@ export function HeroSection() {
               animate="visible"
               custom={0.4}
             >
-              <span className="text-gray-500 dark:text-gray-400">Specializing in</span>
+              <span className="text-gray-500 dark:text-gray-400">Focused on</span>
               <TypingAnimation skills={heroContent.typingSkills} />
             </motion.div>
 

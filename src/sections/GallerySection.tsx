@@ -7,60 +7,76 @@ import { useTheme } from '../context/ThemeContext';
 const GALLERY_ITEMS: GalleryItemData[] = [
   {
     id: 'g1',
-    type: 'component',
-    src: 'https://placehold.co/400x300/6366f1/ffffff?text=Button+System',
-    alt: 'Button component system with variants',
+    type: '',
+    src: '../../../resources/Bft-App/Overview-iPhoneMockup.png',
+    alt: '',
+    isInteractive: false,
+  },
+  {
+    id: 'g10',
+    type: '',
+    src: 'https://placehold.co/400x280/002fa7/002fa7',
+    alt: '',
     isInteractive: false,
   },
   {
     id: 'g2',
-    type: 'motion',
-    src: 'https://placehold.co/400x500/8b5cf6/ffffff?text=Motion+Design',
-    alt: 'Micro-interaction motion design preview',
+    type: '',
+    src: '../../../resources/Bft-App/Confirmation-iPh15ProMockup.png',
+    alt: '',
     isInteractive: false,
   },
   {
-    id: 'g3',
-    type: 'branding',
-    src: 'https://placehold.co/400x250/ec4899/ffffff?text=Brand+Identity',
-    alt: 'Brand identity and logo system',
+    id: 'g11',
+    type: '',
+    src: '../../../resources/Bft-App/Overview-M2.png',
+    alt: '',
     isInteractive: false,
   },
+ 
   {
     id: 'g4',
-    type: 'component',
-    src: 'https://placehold.co/400x350/14b8a6/ffffff?text=Form+Components',
-    alt: 'Accessible form component library',
-    isInteractive: true,
+    type: '',
+    src: '../../../resources/Bft-App/ConfirmationiPh17.png',
+    alt: '',
+    isInteractive: false,
+  },
+   {
+    id: 'g3',
+    type: '',
+    src: '../../../resources/FromGithub/productsPage.png',
+    alt: '',
+    isInteractive: false,
   },
   {
     id: 'g5',
-    type: 'motion',
-    src: 'https://placehold.co/400x450/f59e0b/ffffff?text=Page+Transitions',
-    alt: 'Animated page transition sequences',
+    type: '',
+    src: '../../../resources/Bft-App/BookingSlots-iPh1ProMockup.png',
+    alt: '',
     isInteractive: false,
   },
   {
     id: 'g6',
-    type: 'branding',
-    src: 'https://placehold.co/400x300/10b981/ffffff?text=Color+System',
-    alt: 'Design system color palette and tokens',
+    type: '',
+    src: 'https://placehold.co/400x300/ff8c00/ff8c00',
+    alt: '',
     isInteractive: false,
   },
   {
     id: 'g7',
-    type: 'component',
-    src: 'https://placehold.co/400x400/3b82f6/ffffff?text=Card+Variants',
-    alt: 'Card component variants and states',
-    isInteractive: true,
+    type: '',
+    src: '../../../resources/FromGithub/artGalleryHomepage.png',
+    alt: '',
+    isInteractive: false,
   },
   {
     id: 'g8',
-    type: 'motion',
-    src: 'https://placehold.co/400x280/f43f5e/ffffff?text=Loading+States',
-    alt: 'Animated loading state components',
+    type: '',
+    src: 'https://placehold.co/400x280/002fa7/002fa7',
+    alt: '',
     isInteractive: false,
   },
+
 ];
 
 export function GallerySection() {
@@ -104,7 +120,7 @@ export function GallerySection() {
             Gallery
           </h2>
           <p className={`mt-3 max-w-xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            UI components, motion design, and branding work — curated highlights from the design system.
+            UI bits, motion experiments, and visual explorations.
           </p>
         </div>
 

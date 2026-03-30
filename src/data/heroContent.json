@@ -1,15 +1,15 @@
 {
   "name": "Patrícia Ferková",
   "roleTitle": "Aspiring Product Designer (with Frontend Background)",
-  "tagline": "Learning to design simple, user-friendly digital experiences with a foundation in frontend development.",
+  "tagline": "Learning to design simple, user-friendly digital experiences with a foundation in frontend development and hospitality.",
   "typingSkills": [
-    "UX Research",
     "UI Design",
-    "Interaction Design",
-    "Design Systems",
+    "User Flow",
+    "Responsive Design",
+    "Product Thinking",
     "Frontend Development",
-    "Prototyping",
-    "Accessibility"
+    "Prototyping"
+    
   ],
   "ctaWork": "View Work",
   "ctaContact": "Contact Me"

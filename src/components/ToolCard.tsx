@@ -10,16 +10,13 @@ interface Tool {
 
 // Simple icon map using text/emoji fallbacks for tools
 const ICON_MAP: Record<string, string> = {
-  figma: '🎨',
-  react: '⚛️',
-  framer: '🎬',
-  tailwind: '🌊',
-  typescript: '🔷',
-  storybook: '📖',
-  notion: '📝',
-  miro: '🗺️',
-  vscode: '💻',
-  vercel: '▲',
+  figma: '\u{1F3A8}',
+  github: '\u{1F419}',
+  html: '\u{1F310}',
+  css: '\u{1F58C}\u{FE0F}',
+  bootstrap: '\u{1F4E6}',
+  vscode: '\u{1F4BB}',
+  vercel: '\u{25B2}',
 };
 
 interface ToolCardProps {
@@ -34,7 +31,7 @@ export function ToolCard({ tool }: ToolCardProps) {
 
   return (
     <motion.div
-      className={`relative group rounded-xl p-4 border cursor-default select-none
+      className={`relative group rounded-xl p-4 border cursor-default select-none w-28
         ${isDark
           ? 'bg-gray-800 border-gray-700 hover:border-indigo-500'
           : 'bg-white border-gray-200 hover:border-indigo-400'

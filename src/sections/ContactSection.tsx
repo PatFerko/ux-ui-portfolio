@@ -42,7 +42,7 @@ function SuccessAnimation({ isDark, animate }: { isDark: boolean; animate: boole
       pathLength: 1,
       opacity: 1,
       transition: animate
-        ? { duration: 0.6, ease: 'easeInOut' }
+        ? { duration: 0.6, ease: 'easeInOut' as const }
         : { duration: 0 },
     },
   };
@@ -53,7 +53,7 @@ function SuccessAnimation({ isDark, animate }: { isDark: boolean; animate: boole
       pathLength: 1,
       opacity: 1,
       transition: animate
-        ? { duration: 0.4, ease: 'easeInOut', delay: 0.5 }
+        ? { duration: 0.4, ease: 'easeInOut' as const, delay: 0.5 }
         : { duration: 0 },
     },
   };
@@ -64,7 +64,7 @@ function SuccessAnimation({ isDark, animate }: { isDark: boolean; animate: boole
       scale: 1,
       opacity: 1,
       transition: animate
-        ? { duration: 0.4, ease: 'easeOut' }
+        ? { duration: 0.4, ease: 'easeOut' as const }
         : { duration: 0 },
     },
   };
@@ -318,7 +318,7 @@ export function ContactSection() {
             Let's build something together…
           </h2>
           <p className={`${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Have a project in mind? Drop me a message and I'll get back to you within a day.
+            Have a project in mind? Drop me a message and I'll get back to you within a few days.
           </p>
         </div>
 

@@ -2,16 +2,6 @@
   {
     "platform": "GitHub",
     "url": "https://github.com/PatFerko",
-    "ariaLabel": "Visit Patrícia Ferková's GitHub profile"
-  },
-  {
-    "platform": "LinkedIn",
-    "url": "https://linkedin.com/in/patricia-ferkova",
-    "ariaLabel": "Visit Patrícia Ferková's LinkedIn profile"
-  },
-  {
-    "platform": "Dribbble",
-    "url": "https://dribbble.com/patferkova",
-    "ariaLabel": "Visit Patrícia Ferková's Dribbble portfolio"
+    "ariaLabel": "Visit GitHub profile"
   }
 ]
