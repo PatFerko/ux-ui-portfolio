@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { LazyImage } from './LazyImage';
-import { LazyVideo } from './LazyVideo';
+import { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { LazyImage } from "./LazyImage";
+import { LazyVideo } from "./LazyVideo";
 
 export interface CaseStudy {
   id: string;
@@ -10,8 +10,12 @@ export interface CaseStudy {
   tags: string[];
   thumbnail: string;
   thumbnailIsVideo: boolean;
+  overview?: string;
   introduction?: string;
   problemStatement: string;
+  keyInsight: string;
+  designGoal?: string;
+  hypothesis?: string;
   processNarrative: ProcessStep[];
   beforeAfterVisuals: { before: string; after: string }[];
   metrics: string[];
@@ -19,7 +23,14 @@ export interface CaseStudy {
 }
 
 export interface ProcessStep {
-  phase: 'goals' | 'solution' | 'flow' | 'wireframes_final' | 'wireframes' | 'system' | 'learnings';
+  phase:
+    | "goals"
+    | "solution"
+    | "flow"
+    | "wireframes_final"
+    | "wireframes"
+    | "system"
+    | "learnings";
   description: string;
   assets: string[];
   keyDecisions?: string[];
@@ -60,7 +71,7 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       handleOpen();
     }
@@ -71,7 +82,7 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
       ref={cardRef}
       className="relative flex-shrink-0 w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 cursor-pointer focus-within:ring-2 focus-within:ring-indigo-500"
       initial="rest"
-      whileHover={prefersReducedMotion ? undefined : 'hover'}
+      whileHover={prefersReducedMotion ? undefined : "hover"}
       animate="rest"
       {...(prefersReducedMotion ? {} : hoverVariants)}
     >
@@ -102,7 +113,9 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
             variants={overlayVariants}
             transition={{ duration: 0.2 }}
           >
-            <span className="text-white font-semibold text-sm tracking-wide">View Case Study →</span>
+            <span className="text-white font-semibold text-sm tracking-wide">
+              View Case Study →
+            </span>
           </motion.div>
         )}
       </div>
@@ -113,22 +126,28 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
         {study.codeView && (
           <div className="flex items-center gap-1 mb-3 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 w-fit">
             <button
-              onClick={(e) => { e.stopPropagation(); setIsCodeView(false); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsCodeView(false);
+              }}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
                 !isCodeView
-                  ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               }`}
               aria-pressed={!isCodeView}
             >
               Design
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); setIsCodeView(true); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsCodeView(true);
+              }}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
                 isCodeView
-                  ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               }`}
               aria-pressed={isCodeView}
             >
@@ -155,7 +174,10 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
             </div>
             <ul className="space-y-1">
               {study.codeView.highlights.map((h, i) => (
-                <li key={i} className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5">
+                <li
+                  key={i}
+                  className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5"
+                >
                   <span className="text-indigo-400 mt-0.5">▸</span>
                   {h}
                 </li>
