@@ -4,7 +4,7 @@
     "title": "BreakfastFlow: Managing Hotel Breakfast Demand",
     "shortDescription": "A QR-based booking system that helps hotel guests avoid crowded breakfast hours using real-time availability and flexible booking.",
     "tags": ["Guest Flow", "Booking Flow", "Real-Time Data", "Service Design"],
-    "thumbnail": "../../../resources/Bft-App/Confirmation-iPh15ProMockup.png",
+    "thumbnail": "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
     "thumbnailIsVideo": false,
     "overviewPoints": [
       "UX/UI Designer",
@@ -28,22 +28,22 @@
       {
         "phase": "flow",
         "description": "Guests access the system via QR code, view breakfast availability, and select a preferred time slot. The system validates availability in real time and suggests alternatives if a slot is unavailable. After booking, guests can manage their reservation by modifying or canceling it as needed.",
-        "assets": ["../../../resources/Bft-App/Flow7.png"]
+        "assets": ["/resources/Bft-App/Flow7.png"]
       },
       {
         "phase": "wireframes_final",
         "description": "",
         "assets": [
-          "../../../resources/Bft-App/Overview-iPhoneMockup.png",
-          "../../../resources/Bft-App/OverviewiPh17Pro.png",
-          "../../../resources/Bft-App/ConfirmationiPh17.png",
-          "../../../resources/Bft-App/Confirmation-iPh15ProMockup.png",
-          "../../../resources/Bft-App/Occupancy-iPh17Pro.png",
-          "../../../resources/Bft-App/BookingSlots-iPh17Pro.png",
-          "../../../resources/Bft-App/BookingSlots-iPh1ProMockup.png",
-          "../../../resources/Bft-App/Wireframe-Overview.png",
-          "../../../resources/Bft-App/Wireframe-BookingSlots.png",
-          "../../../resources/Bft-App/Wireframe-Confirmation.png"
+          "/resources/Bft-App/Overview-iPhoneMockup.png",
+          "/resources/Bft-App/OverviewiPh17Pro.png",
+          "/resources/Bft-App/ConfirmationiPh17.png",
+          "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
+          "/resources/Bft-App/Occupancy-iPh17Pro.png",
+          "/resources/Bft-App/BookingSlots-iPh17Pro.png",
+          "/resources/Bft-App/BookingSlots-iPh1ProMockup.png",
+          "/resources/Bft-App/Wireframe-Overview.png",
+          "/resources/Bft-App/Wireframe-BookingSlots.png",
+          "/resources/Bft-App/Wireframe-Confirmation.png"
         ]
       },
       {
@@ -59,8 +59,8 @@
     ],
     "beforeAfterVisuals": [
       {
-        "before": "../../../resources/Bft-App/Wireframe-Overview.png",
-        "after": "../../../resources/Bft-App/OverviewiPh17Pro.png"
+        "before": "/resources/Bft-App/Wireframe-Overview.png",
+        "after": "/resources/Bft-App/OverviewiPh17Pro.png"
       }
     ],
     "metrics": [
@@ -87,7 +87,7 @@
       "Multi-User",
       "Scheduling"
     ],
-    "thumbnail": "../../../resources/Shift-App/ScheduleMockup.png",
+    "thumbnail": "/resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
     "overview": "Designed a mobile-first shift management system to improve schedule visibility and reduce miscommunication in hospitality teams.",
     "introduction": "While working in gastronomy and hotel environments, I experienced firsthand how shift coordination often relies on manual communication, making it difficult to manage swaps, preferences, and last-minute changes.",
@@ -98,21 +98,21 @@
     "processNarrative": [
       {
         "phase": "flow",
-        "description": "Staff flow: \n\n• View schedule \n\n• Request shift swap \n\n• System checks availability and coverage \n\n• Manager approves (if needed) \n\n• Schedule updates in real time \n\nIf a swap causes understaffing, the system prevents it or suggests alternatives.",
-        "assets": ["../../../resources/Shift-App/MyFlowFinal.png"]
+        "description": "Staff view their schedule → request a shift swap → system checks availability and coverage → manager approves (if needed) → schedule updates in real time. If a swap would cause understaffing, the system prevents it or suggests alternatives.",
+        "assets": ["/resources/Shift-App/MyFlowFinal.png"]
       },
       {
         "phase": "wireframes",
         "description": "Created low and mid-fidelity wireframes to validate layout and interaction patterns before moving to visual design.",
         "assets": [
-          "../../../resources/Shift-App/ScheduleMockup.png",
-          "../../../resources/Shift-App/Schedule.png",
-          "../../../resources/Shift-App/ShiftDetail.png",
-          "../../../resources/Shift-App/ChooseSwapPartner.png",
-          "../../../resources/Shift-App/RequestSwap.png",
-          "../../../resources/Shift-App/SystemValidation.png",
-          "../../../resources/Shift-App/SystemValidation-No.png",
-          "../../../resources/Shift-App/Approval.png"
+          "/resources/Shift-App/ScheduleMockup.png",
+          "/resources/Shift-App/Schedule.png",
+          "/resources/Shift-App/ShiftDetail.png",
+          "/resources/Shift-App/ChooseSwapPartner.png",
+          "/resources/Shift-App/RequestSwap.png",
+          "/resources/Shift-App/SystemValidation.png",
+          "/resources/Shift-App/SystemValidation-No.png",
+          "/resources/Shift-App/Approval.png"
         ]
       },
       {
