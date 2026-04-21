@@ -16,6 +16,9 @@ export interface CaseStudy {
   keyInsight: string;
   designGoal?: string;
   hypothesis?: string;
+  tradeoffs?: string;
+  processIntro?: string;
+  learnings?: string;
   processNarrative: ProcessStep[];
   beforeAfterVisuals: { before: string; after: string }[];
   metrics: string[];

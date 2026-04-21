@@ -80,30 +80,26 @@
     "id": "health-app",
     "title": "A Smarter Shift Management System",
     "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
-    "tags": [
-      "System Design",
-      "Workflow",
-      "Automation",
-      "Multi-User",
-      "Scheduling"
-    ],
+    "tags": [],
     "thumbnail": "/resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
-    "overview": "Designed a mobile-first shift management system to improve schedule visibility and reduce miscommunication in hospitality teams.",
+    "overview": "While working in hospitality, I observed that shift coordination relied on manual communication, making it difficult to manage changes, preferences, and last-minute updates.",
     "introduction": "While working in gastronomy and hotel environments, I experienced firsthand how shift coordination often relies on manual communication, making it difficult to manage swaps, preferences, and last-minute changes.",
-    "problemStatement": "Shift management in hospitality environments is often handled through static schedules or informal communication channels (e.g., WhatsApp, printed rosters). This creates several issues: \n\n• Employees lack clear, real-time visibility of their shifts \n\n• Managers spend significant time handling last-minute changes \n\n• Miscommunication leads to missed or understaffed shifts \n\nAs a result, operational efficiency decreases and employee experience suffers.",
-    "keyInsight": "From my experience, most scheduling issues don't come from the schedule itself—but from last-minute changes and lack of real-time updates.",
-    "designGoal": "The goal of this project was to design a flexible shift management system that: \n\n• Improve visibility for employees \n\n• Reduce manual coordination for managers \n\n• Support real-time updates and flexible shift changes",
-    "hypothesis": "If employees and managers use a centralized, real-time scheduling system with built-in shift swapping and notifications, then miscommunication will decrease and shift coverage will become more reliable.",
+    "problemStatement": "Shift management is often handled through static schedules or informal channels (e.g. WhatsApp, printed rosters), leading to:\n\n• Lack of real-time visibility\n\n• High coordination effort for managers\n\n• Frequent miscommunication\n\nThis reduces operational efficiency and negatively impacts staff experience.",
+    "keyInsight": "Most issues don’t come from the schedule itself, but from last-minute changes and the lack of real-time updates.",
+    "designGoal": "I focused on designing a system that prioritises real-time updates and automated validation, rather than static planning, to reduce coordination overhead.",
+    "hypothesis": "Designed a mobile-first system enabling staff to manage shifts and request swaps in real time, while managers maintain reliable staffing through automated validation and approval workflows.",
+    "tradeoffs": "A fully flexible system would improve user freedom but risk understaffing. I introduced rule-based validation to balance flexibility with operational reliability.",
+    "processIntro": "Structured shift swap and validation logic through user flows, then tested interaction patterns using low- and mid-fidelity wireframes.",
     "processNarrative": [
       {
         "phase": "flow",
-        "description": "Staff view their schedule → request a shift swap → system checks availability and coverage → manager approves (if needed) → schedule updates in real time. If a swap would cause understaffing, the system prevents it or suggests alternatives.",
+        "description": "",
         "assets": ["/resources/Shift-App/MyFlowFinal.png"]
       },
       {
         "phase": "wireframes",
-        "description": "Created low and mid-fidelity wireframes to validate layout and interaction patterns before moving to visual design.",
+        "description": "",
         "assets": [
           "/resources/Shift-App/ScheduleMockup.png",
           "/resources/Shift-App/Schedule.png",
@@ -114,30 +110,15 @@
           "/resources/Shift-App/SystemValidation-No.png",
           "/resources/Shift-App/Approval.png"
         ]
-      },
-      {
-        "phase": "system",
-        "description": "Shift swaps are validated against staffing requirements to ensure adequate coverage. The system automatically detects and prevents scheduling conflicts. Staff preferences and availability inform shift assignments. Managers can review and override requests when necessary. Confirmed changes are reflected instantly across the schedule",
-        "assets": []
-      },
-      {
-        "phase": "solution",
-        "description": "The final solution is a mobile-first shift management system that enables staff to view shifts, request swaps, and manage availability with minimal friction. Managers can approve changes and maintain proper staffing through automated validation, reducing miscommunication and manual coordination.",
-        "assets": []
-      },
-      {
-        "phase": "learnings",
-        "description": "Designed for multiple user roles, balancing staff needs with managerial control. Developed a stronger understanding of constraints, validation rules, and edge cases. Simplified complex operational logic into clear and intuitive user flows. Used system feedback to support user decisions and reduce confusion. Balanced flexibility for users with the need for reliable and consistent operations.",
-        "assets": []
       }
     ],
+    "learnings": "Designed for multiple user roles, balancing staff flexibility with managerial control.|Simplified complex operational rules (e.g. shift validation) into clear, intuitive interactions.|Learned that most scheduling issues stem from real-time changes, not initial planning.",
     "beforeAfterVisuals": [],
     "metrics": [
-      "Rule-based interactions ensure only valid shift changes are allowed",
-      "Transparent system feedback helps users understand outcomes and next steps",
-      "Role-based workflows support both staff actions and managerial control",
-      "Visible conflicts make staffing gaps and high-demand shifts easy to identify",
-      "Streamlined interactions reduce complexity and manual coordination"
+      "Prioritised simplicity over flexibility to reduce coordination effort in high-pressure environments",
+      "Introduced rule-based validation to prevent understaffing and ensure reliable shift coverage",
+      "Designed role-based workflows to balance staff flexibility with managerial control",
+      "Used clear system feedback to help users understand outcomes and reduce confusion"
     ],
     "codeView": {
       "repoUrl": "https://github.com/PatFerko/wellness-app",

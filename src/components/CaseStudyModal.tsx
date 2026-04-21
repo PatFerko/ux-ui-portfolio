@@ -236,8 +236,8 @@ export function CaseStudyModal({
 
                 {/* Header — sticky with scroll shadow */}
                 <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 sm:px-8 py-5 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
-                  <div className="min-w-0">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-2xl font-bold text-violet-900 dark:text-violet-300 leading-tight">
                       {study.title}
                     </h2>
                     <div className="flex flex-wrap gap-2 mt-3">
@@ -277,8 +277,8 @@ export function CaseStudyModal({
 
                 {/* Content */}
                 <div className="px-6 sm:px-8 py-8 space-y-10">
-                  {/* Overview */}
-                  {study.overview && (
+                  {/* Context */}
+                  {(study.overview || study.introduction) && (
                     <section
                       aria-labelledby="overview-heading"
                       className="rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1"
@@ -287,7 +287,7 @@ export function CaseStudyModal({
                         id="overview-heading"
                         className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
                       >
-                        Overview
+                        Context
                       </h3>
 
                       <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
@@ -295,26 +295,7 @@ export function CaseStudyModal({
                       </p>
                     </section>
                   )}
-
-                  {/* Introduction */}
-                  {study.introduction && (
-                    <section
-                      aria-labelledby="intro-heading"
-                      className="rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1"
-                    >
-                      <h3
-                        id="intro-heading"
-                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
-                      >
-                        Introduction
-                      </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7">
-                        {study.introduction}
-                      </p>
-                    </section>
-                  )}
-
-                  {/* Problem Statement */}
+                  {/* Problem */}
                   <section
                     aria-labelledby="problem-heading"
                     className="rounded-xl bg-amber-50/40 dark:bg-amber-950/10 p-5 -mx-1"
@@ -323,7 +304,7 @@ export function CaseStudyModal({
                       id="problem-heading"
                       className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
                     >
-                      Problem Statement
+                      Problem
                     </h3>
                     <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
                       {study.problemStatement}
@@ -349,7 +330,7 @@ export function CaseStudyModal({
                     </section>
                   )}
 
-                  {/* Design Goal */}
+                  {/* Decision */}
                   {study.designGoal && (
                     <section
                       aria-labelledby="design-goal-heading"
@@ -359,7 +340,7 @@ export function CaseStudyModal({
                         id="design-goal-heading"
                         className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
                       >
-                        Design Goal
+                        Decision
                       </h3>
 
                       <p className="text-base text-gray-700 dark:text-gray-300 leading-7  whitespace-pre-line">
@@ -368,7 +349,7 @@ export function CaseStudyModal({
                     </section>
                   )}
 
-                  {/* Hypothesis */}
+                  {/* Solution */}
                   {study.hypothesis && (
                     <section
                       aria-labelledby="hypothesis-heading"
@@ -378,11 +359,29 @@ export function CaseStudyModal({
                         id="hypothesis-heading"
                         className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
                       >
-                        Hypothesis
+                        Solution
                       </h3>
 
                       <p className="text-base font-medium text-gray-800 dark:text-gray-200 leading-7">
                         {study.hypothesis}
+                      </p>
+                    </section>
+                  )}
+
+                  {/* Trade-offs */}
+                  {study.tradeoffs && (
+                    <section
+                      aria-labelledby="tradeoffs-heading"
+                      className="p-5 -mx-1"
+                    >
+                      <h3
+                        id="tradeoffs-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
+                      >
+                        Trade-offs
+                      </h3>
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
+                        {study.tradeoffs}
                       </p>
                     </section>
                   )}
@@ -395,6 +394,11 @@ export function CaseStudyModal({
                     >
                       Process
                     </h3>
+                    {study.processIntro && (
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7 mb-8">
+                        {study.processIntro}
+                      </p>
+                    )}
                     <div className="space-y-8">
                       {study.processNarrative.map((step) => (
                         <div key={step.phase} className="flex gap-4">
@@ -412,19 +416,29 @@ export function CaseStudyModal({
                             {step.phase === "learnings" ? (
                               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                                 {step.description
-                                  .split(/\.\s+/)
+                                  .split("|")
                                   .filter(Boolean)
                                   .map((s, si) => (
                                     <li key={si} className="flex gap-2.5">
                                       <span className="text-indigo-400 flex-shrink-0 mt-0.5">
                                         &bull;
                                       </span>
-                                      <span>
-                                        {s.endsWith(".") ? s : `${s}.`}
-                                      </span>
+                                      <span>{s}</span>
                                     </li>
                                   ))}
                               </ul>
+                            ) : step.phase === "flow" ? (
+                              <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400 leading-7">
+                                {step.description
+                                  .split("\n\n\n\n")
+                                  .map((para, pi) => (
+                                    <div key={pi} className="flex-1">
+                                      {para.split("\n\n").map((line, li) => (
+                                        <p key={li}>{renderRichText(line)}</p>
+                                      ))}
+                                    </div>
+                                  ))}
+                              </div>
                             ) : (
                               <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-7">
                                 {step.description
@@ -499,6 +513,64 @@ export function CaseStudyModal({
                     </div>
                   </section>
 
+                  {/* Key Decisions */}
+                  {study.metrics.length > 0 && (
+                    <section aria-labelledby="metrics-heading">
+                      <h3
+                        id="metrics-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
+                      >
+                        Key Decisions
+                      </h3>
+                      <ul className="space-y-2">
+                        {study.metrics.map((metric, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-300"
+                          >
+                            <span className="text-indigo-500 mt-0.5 flex-shrink-0">
+                              {"\u2713"}
+                            </span>
+                            <span>
+                              {metric.split(/\*\*/).map((part, pi) =>
+                                pi % 2 === 1 ? (
+                                  <strong
+                                    key={pi}
+                                    className="font-semibold text-gray-900 dark:text-white"
+                                  >
+                                    {part}
+                                  </strong>
+                                ) : (
+                                  part
+                                ),
+                              )}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
+                  {/* Learnings */}
+                  {study.learnings && (
+                    <section aria-labelledby="learnings-heading">
+                      <h3
+                        id="learnings-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
+                      >
+                        Learnings
+                      </h3>
+                      <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                        {study.learnings.split("|").filter(Boolean).map((s, i) => (
+                          <li key={i} className="flex gap-2.5">
+                            <span className="text-indigo-400 flex-shrink-0 mt-0.5">&bull;</span>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
                   {/* Before / After */}
                   {study.beforeAfterVisuals.length > 0 && (
                     <section aria-labelledby="before-after-heading">
@@ -558,44 +630,6 @@ export function CaseStudyModal({
                           </div>
                         ))}
                       </div>
-                    </section>
-                  )}
-
-                  {/* Key Design Decisions — single column for readability */}
-                  {study.metrics.length > 0 && (
-                    <section aria-labelledby="metrics-heading">
-                      <h3
-                        id="metrics-heading"
-                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
-                      >
-                        Key Design Decisions
-                      </h3>
-                      <ul className="space-y-2">
-                        {study.metrics.map((metric, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-300"
-                          >
-                            <span className="text-indigo-500 mt-0.5 flex-shrink-0">
-                              {"\u2713"}
-                            </span>
-                            <span>
-                              {metric.split(/\*\*/).map((part, pi) =>
-                                pi % 2 === 1 ? (
-                                  <strong
-                                    key={pi}
-                                    className="font-semibold text-gray-900 dark:text-white"
-                                  >
-                                    {part}
-                                  </strong>
-                                ) : (
-                                  part
-                                ),
-                              )}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
                     </section>
                   )}
 
