@@ -324,9 +324,13 @@ export function CaseStudyModal({
                         Key Insight
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7">
-                        {study.keyInsight}
-                      </p>
+                      <div className="space-y-3">
+                        {study.keyInsight.split("\n\n").map((para, i) => (
+                          <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-7">
+                            {para}
+                          </p>
+                        ))}
+                      </div>
                     </section>
                   )}
 
