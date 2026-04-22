@@ -14,6 +14,7 @@
     "overview": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
     "introduction": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
     "problemStatement": "Guests often arrive at hotel breakfast at the same time due to a lack of visibility into occupancy, resulting in overcrowding, long waits, and frustration. At the same time, staff lack tools to manage demand and distribute guest flow effectively.",
+    "keyInsight": "Redistributes demand across time slots, reduces peak-time congestion, and improves both guest experience and operational efficiency.",
     "processNarrative": [
       {
         "phase": "goals",
@@ -78,18 +79,18 @@
   },
   {
     "id": "health-app",
-    "title": "A Smarter Shift Management System",
+    "title": "Reducing Scheduling Conflicts in Hospitality Through Real-Time Shift Management",
     "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
     "tags": [],
     "thumbnail": "/resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
     "overview": "While working in hospitality, I observed that shift coordination relied on manual communication, making it difficult to manage changes, preferences, and last-minute updates.",
     "introduction": "While working in gastronomy and hotel environments, I experienced firsthand how shift coordination often relies on manual communication, making it difficult to manage swaps, preferences, and last-minute changes.",
-    "problemStatement": "Shift management is often handled through static schedules or informal channels (e.g. WhatsApp, printed rosters), leading to:\n\n• Lack of real-time visibility\n\n• High coordination effort for managers\n\n• Frequent miscommunication\n\nThis reduces operational efficiency and negatively impacts staff experience.",
+    "problemStatement": "Shift management is often handled through static schedules or informal channels (e.g. WhatsApp, printed rosters), leading to:\n\n• Lack of real-time visibility\n\n• High coordination effort for managers\n\n• Frequent miscommunication\n\nThis leads to understaffed shifts, increased workload for managers, and frustration for staff.",
     "keyInsight": "Most issues don’t come from the schedule itself, but from last-minute changes and the lack of real-time updates.",
-    "designGoal": "I focused on designing a system that prioritises real-time updates and automated validation, rather than static planning, to reduce coordination overhead.",
-    "hypothesis": "Designed a mobile-first system enabling staff to manage shifts and request swaps in real time, while managers maintain reliable staffing through automated validation and approval workflows.",
-    "tradeoffs": "A fully flexible system would improve user freedom but risk understaffing. I introduced rule-based validation to balance flexibility with operational reliability.",
+    "designGoal": "I prioritised real-time updates and automated validation over static scheduling to reduce coordination overhead and prevent operational failures.",
+    "hypothesis": "Designed a mobile-first system enabling staff to manage shifts and request swaps in real time, while managers maintain reliable staffing through automated validation and approval workflows.\n\nThis approach reduces manual coordination and improves reliability in high-pressure hospitality environments.",
+    "tradeoffs": "A fully flexible system would increase user freedom but risk understaffing and service disruption.",
     "processIntro": "Structured shift swap and validation logic through user flows, then tested interaction patterns using low- and mid-fidelity wireframes.",
     "processNarrative": [
       {

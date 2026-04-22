@@ -362,9 +362,13 @@ export function CaseStudyModal({
                         Solution
                       </h3>
 
-                      <p className="text-base font-medium text-gray-800 dark:text-gray-200 leading-7">
-                        {study.hypothesis}
-                      </p>
+                      <div className="space-y-3">
+                        {study.hypothesis.split("\n\n").map((para, i) => (
+                          <p key={i} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-7">
+                            {para}
+                          </p>
+                        ))}
+                      </div>
                     </section>
                   )}
 
