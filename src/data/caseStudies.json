@@ -51,13 +51,9 @@
         "phase": "system",
         "description": "Time slots that are in the past or already full are shown but cannot be selected. Slot availability is checked in real time before a booking is confirmed. When a selected slot is no longer available, the system recommends another option. Guests can choose between reserving in advance or arriving more flexibly",
         "assets": []
-      },
-      {
-        "phase": "learnings",
-        "description": "Translated a real-world service problem into a clear and structured digital solution. Shifted from screen-level thinking to system-level design, focusing on flows, rules, and interactions. Used simple visual signals to improve clarity and support user decision-making. Designed for both user needs and operational constraints, balancing flexibility with control. Reduced complexity by prioritizing essential features and keeping the experience intuitive",
-        "assets": []
       }
     ],
+    "learnings": "Translated a real-world service problem into a clear and structured digital solution.|Shifted from screen-level thinking to system-level design, focusing on flows, rules, and interactions.|Used simple visual signals to improve clarity and support user decision-making.|Designed for both user needs and operational constraints, balancing flexibility with control.|Reduced complexity by prioritizing essential features and keeping the experience intuitive.",
     "beforeAfterVisuals": [
       {
         "before": "/resources/Bft-App/Wireframe-Overview.png",
