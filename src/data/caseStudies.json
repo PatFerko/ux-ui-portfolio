@@ -11,7 +11,7 @@
       "Shift Management System",
       "Staff scheduling & communication"
     ],
-    "overview": "During peak breakfast hours, guests arriving at the same time often cause overcrowding, long wait times, and service breakdown.",
+    "overview": "During peak breakfast hours, guests arriving at the same time often cause overcrowding, long wait times, and **service breakdown**.",
     "introduction": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
     "problemStatement": "Guests tend to arrive at similar times due to a lack of visibility into occupancy, leading to overcrowding and frustration.\n\nAt the same time, staff lack tools to manage demand and distribute guest flow effectively.",
     "keyInsight": "Guests tend to choose the most convenient visible option rather than planning ahead, which leads to clustering during peak times.",
