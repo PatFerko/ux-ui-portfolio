@@ -327,7 +327,7 @@ export function CaseStudyModal({
                       <div className="space-y-3">
                         {study.keyInsight.split("\n\n").map((para, i) => (
                           <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-7">
-                            {para}
+                            {renderRichText(para)}
                           </p>
                         ))}
                       </div>
@@ -400,8 +400,9 @@ export function CaseStudyModal({
                       id="process-heading"
                       className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-6"
                     >
-                      Process
+                      {study.processLabel ?? "Process"}
                     </h3>
+
                     {study.processIntro && (
                       <p className="text-base text-gray-700 dark:text-gray-300 leading-7 mb-8">
                         {study.processIntro}
@@ -576,6 +577,21 @@ export function CaseStudyModal({
                           </li>
                         ))}
                       </ul>
+                    </section>
+                  )}
+
+                  {/* Impact */}
+                  {study.impact && (
+                    <section aria-labelledby="impact-heading">
+                      <h3
+                        id="impact-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
+                      >
+                        Impact
+                      </h3>
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7">
+                        {study.impact}
+                      </p>
                     </section>
                   )}
 

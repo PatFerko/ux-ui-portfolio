@@ -18,7 +18,9 @@ export interface CaseStudy {
   hypothesis?: string;
   tradeoffs?: string;
   processIntro?: string;
+  processLabel?: string;
   learnings?: string;
+  impact?: string;
   processNarrative: ProcessStep[];
   beforeAfterVisuals: { before: string; after: string }[];
   metrics: string[];

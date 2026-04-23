@@ -1,9 +1,9 @@
 [
   {
     "id": "fintech-dashboard",
-    "title": "BreakfastFlow: Managing Hotel Breakfast Demand",
+    "title": "BreakfastFlow: Reducing Peak-Time Congestion Through Behavioral Booking",
     "shortDescription": "A QR-based booking system that helps hotel guests avoid crowded breakfast hours using real-time availability and flexible booking.",
-    "tags": ["Guest Flow", "Booking Flow", "Real-Time Data", "Service Design"],
+    "tags": [],
     "thumbnail": "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
     "thumbnailIsVideo": false,
     "overviewPoints": [
@@ -11,19 +11,16 @@
       "Shift Management System",
       "Staff scheduling & communication"
     ],
-    "overview": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
+    "overview": "During peak breakfast hours, guests often arrive at the same time, leading to overcrowding, long wait times, and increased pressure on staff.",
     "introduction": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
-    "problemStatement": "Guests often arrive at hotel breakfast at the same time due to a lack of visibility into occupancy, resulting in overcrowding, long waits, and frustration. At the same time, staff lack tools to manage demand and distribute guest flow effectively.",
-    "keyInsight": "Guests tend to choose the most convenient visible option rather than planning ahead, which leads to clustering during peak times.\n\nWithout guidance, this behaviour causes demand to concentrate in the same time windows.",
+    "problemStatement": "Guests tend to arrive at similar times due to a lack of visibility into occupancy, leading to overcrowding and frustration.\n\nAt the same time, staff lack tools to manage demand and distribute guest flow effectively.",
+    "keyInsight": "Guests tend to choose the most convenient visible option rather than planning ahead, which leads to clustering during peak times.",
+    "processLabel": "Decision",
+    "processIntro": "I prioritised influencing user behaviour through real-time availability and visual cues, instead of enforcing strict booking rules.",
     "processNarrative": [
       {
-        "phase": "goals",
-        "description": "Help guests choose less crowded breakfast times to reduce congestion, while giving staff clear insight into demand and keeping the experience flexible.",
-        "assets": []
-      },
-      {
         "phase": "solution",
-        "description": "I designed a QR-based booking system that reduces breakfast congestion by guiding guests toward less crowded time slots through real-time occupancy insights. Guests can explore availability, see peak times, and optionally reserve a slot while retaining the flexibility to arrive without booking.\n\nTo support decision-making, the system uses clear visual states ({{green:quiet}}, {{orange:steady}}, {{red:full}}) and automatically validates capacity to prevent overcrowding.\n\n**Core concept:** Influence behavior without enforcing it.",
+        "description": "Designed a QR-based booking system that redistributes demand by guiding guests toward less crowded time slots using real-time availability and visual cues. Guests can explore occupancy levels, identify peak times, and optionally reserve a slot while retaining flexibility.\n\nInstead of controlling users, the system guides their decisions to improve overall flow.",
         "assets": []
       },
       {
@@ -49,11 +46,12 @@
       },
       {
         "phase": "system",
-        "description": "Time slots that are in the past or already full are shown but cannot be selected. Slot availability is checked in real time before a booking is confirmed. When a selected slot is no longer available, the system recommends another option. Guests can choose between reserving in advance or arriving more flexibly",
+        "description": "The system validates availability in real time and suggests alternative time slots when capacity is reached.",
         "assets": []
       }
     ],
-    "learnings": "Translated a real-world service problem into a clear and structured digital solution.|Shifted from screen-level thinking to system-level design, focusing on flows, rules, and interactions.|Used simple visual signals to improve clarity and support user decision-making.|Designed for both user needs and operational constraints, balancing flexibility with control.|Reduced complexity by prioritizing essential features and keeping the experience intuitive.",
+    "learnings": "Learned that user behaviour in real environments is driven more by visible options than planning.|Designing for flow requires influencing decisions, not just providing functionality.|Balanced user flexibility with operational constraints to ensure reliable outcomes.",
+    "impact": "Redistributes demand across time slots, reduces peak-time congestion, and improves both guest experience and operational efficiency.",
     "beforeAfterVisuals": [
       {
         "before": "/resources/Bft-App/Wireframe-Overview.png",
@@ -61,11 +59,10 @@
       }
     ],
     "metrics": [
-      "**Visible availability states** make occupancy easy to understand",
-      "**Disabled unavailable slots** reduce mistakes while preserving clarity",
-      "**Alternative suggestions** keep users moving forward instead of interrupting the flow",
-      "**A lightweight booking flow** makes the experience quick and easy to use",
-      "**Flexible booking behavior** balances guest choice with operational needs"
+      "Visible availability states (quiet, steady, full) make occupancy easy to understand",
+      "Alternative suggestions keep users moving forward instead of blocking interaction",
+      "A lightweight booking flow reduces friction and encourages adoption",
+      "Flexibility is maintained to balance user choice with operational constraints"
     ],
     "codeView": {
       "repoUrl": "https://github.com/PatFerko/fintrack-dashboard",
