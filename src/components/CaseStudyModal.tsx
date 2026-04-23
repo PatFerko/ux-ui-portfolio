@@ -221,7 +221,7 @@ export function CaseStudyModal({
 
             <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
               <motion.div
-                className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gray-900 shadow-2xl pointer-events-auto"
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gray-900 shadow-2xl pointer-events-auto"
                 variants={panelVariants}
                 initial="hidden"
                 animate="visible"
@@ -290,7 +290,7 @@ export function CaseStudyModal({
                         Context
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
                         {study.overview}
                       </p>
                     </section>
@@ -306,7 +306,7 @@ export function CaseStudyModal({
                     >
                       Problem
                     </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
+                    <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
                       {study.problemStatement}
                     </p>
                   </section>
@@ -315,7 +315,7 @@ export function CaseStudyModal({
                   {study.keyInsight && (
                     <section
                       aria-labelledby="key-insight-heading"
-                      className="p-5 -mx-1"
+                      className="p-5 -mx-1 my-8"
                     >
                       <h3
                         id="key-insight-heading"
@@ -326,7 +326,7 @@ export function CaseStudyModal({
 
                       <div className="space-y-3">
                         {study.keyInsight.split("\n\n").map((para, i) => (
-                          <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-7">
+                          <p key={i} className="text-lg font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
                             {renderRichText(para)}
                           </p>
                         ))}
@@ -347,7 +347,7 @@ export function CaseStudyModal({
                         Decision
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7  whitespace-pre-line">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug  whitespace-pre-line">
                         {study.designGoal}
                       </p>
                     </section>
@@ -368,7 +368,7 @@ export function CaseStudyModal({
 
                       <div className="space-y-3">
                         {study.hypothesis.split("\n\n").map((para, i) => (
-                          <p key={i} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-7">
+                          <p key={i} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-snug">
                             {para}
                           </p>
                         ))}
@@ -388,7 +388,7 @@ export function CaseStudyModal({
                       >
                         Trade-offs
                       </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7 whitespace-pre-line">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
                         {study.tradeoffs}
                       </p>
                     </section>
@@ -404,7 +404,7 @@ export function CaseStudyModal({
                     </h3>
 
                     {study.processIntro && (
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7 mb-8">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug mb-8">
                         {study.processIntro}
                       </p>
                     )}
@@ -437,7 +437,7 @@ export function CaseStudyModal({
                                   ))}
                               </ul>
                             ) : step.phase === "flow" ? (
-                              <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400 leading-7">
+                              <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400 leading-snug">
                                 {step.description
                                   .split("\n\n\n\n")
                                   .map((para, pi) => (
@@ -449,7 +449,7 @@ export function CaseStudyModal({
                                   ))}
                               </div>
                             ) : (
-                              <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-7">
+                              <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
                                 {step.description
                                   .split("\n\n")
                                   .map((para, pi) => (
@@ -589,7 +589,7 @@ export function CaseStudyModal({
                       >
                         Impact
                       </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-7">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug">
                         {study.impact}
                       </p>
                     </section>
@@ -816,3 +816,4 @@ export function CaseStudyModal({
     </dialog>
   );
 }
+
