@@ -290,8 +290,8 @@ export function CaseStudyModal({
                         Context
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
-                        {study.overview}
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug">
+                        {renderRichText(study.overview)}
                       </p>
                     </section>
                   )}
