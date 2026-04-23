@@ -291,7 +291,7 @@ export function CaseStudyModal({
                       </h3>
 
                       <p className="text-base text-gray-700 dark:text-gray-300 leading-snug">
-                        {renderRichText(study.overview)}
+                        {renderRichText(study.overview ?? "")}
                       </p>
                     </section>
                   )}
