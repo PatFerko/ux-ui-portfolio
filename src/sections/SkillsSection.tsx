@@ -9,7 +9,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}
+      className={`py-12 sm:py-20 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}
       aria-labelledby="skills-heading"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -85,7 +85,7 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="relative flex-shrink-0 w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 cursor-pointer focus-within:ring-2 focus-within:ring-indigo-500"
+      className="relative flex-shrink-0 w-full sm:w-72 md:w-80 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 cursor-pointer focus-within:ring-2 focus-within:ring-indigo-500"
       initial="rest"
       whileHover={prefersReducedMotion ? undefined : "hover"}
       animate="rest"

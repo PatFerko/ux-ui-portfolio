@@ -34,8 +34,8 @@ export function HeroSection() {
     >
       <ParticleBackground />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24 sm:pt-24 md:pt-28 lg:pt-24 xl:pt-32">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Text content */}
           <div className="flex-1 text-center lg:text-left">
             <motion.p
@@ -113,9 +113,9 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Draggable widget */}
+          {/* Draggable widget — hidden on mobile to avoid overflow */}
           <motion.div
-            className="flex-shrink-0"
+            className="hidden sm:block flex-shrink-0"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -129,7 +129,7 @@ export function HeroSection() {
       {/* Scroll indicator */}
       {!prefersReducedMotion && (
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600"
+          className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-1 text-gray-400 dark:text-gray-600"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           aria-hidden="true"

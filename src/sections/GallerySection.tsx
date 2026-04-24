@@ -126,7 +126,7 @@ export function GallerySection() {
 
         {/* Masonry grid — CSS columns */}
         <div
-          className="columns-2 md:columns-3 gap-4"
+          className="columns-1 sm:columns-2 md:columns-3 gap-4"
           role="list"
           aria-label="Gallery items"
         >

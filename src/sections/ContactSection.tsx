@@ -323,7 +323,7 @@ export function ContactSection() {
         </div>
 
         {/* Form card */}
-        <div className={`rounded-2xl p-8 shadow-sm ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
+        <div className={`rounded-2xl p-4 sm:p-8 shadow-sm ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <ContactForm isDark={isDark} animate={animate} />
         </div>
 

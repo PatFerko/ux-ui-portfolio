@@ -35,7 +35,7 @@ export function CaseStudiesSection() {
   return (
     <section
       id="work"
-      className="py-20 bg-gray-50 dark:bg-gray-900"
+      className="py-12 sm:py-20 bg-gray-50 dark:bg-gray-900"
       aria-labelledby="work-heading"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,15 +52,15 @@ export function CaseStudiesSection() {
           </p>
         </div>
 
-        {/* Horizontal scroll container with scroll-snap */}
+        {/* Cards — vertical stack on mobile, horizontal scroll on sm+ */}
         <div
-          className="flex gap-6 overflow-x-auto p-2 -m-2 pb-6 snap-x snap-mandatory scroll-smooth justify-center"
+          className="flex flex-col sm:flex-row sm:gap-6 sm:overflow-x-auto gap-4 sm:p-2 sm:-m-2 sm:pb-6 sm:snap-x sm:snap-mandatory sm:scroll-smooth sm:justify-center"
           style={{ scrollbarWidth: 'thin' }}
           role="list"
           aria-label="Case studies"
         >
           {caseStudies.map((study) => (
-            <div key={study.id} role="listitem" className="snap-start">
+            <div key={study.id} role="listitem" className="sm:snap-start sm:flex-shrink-0">
               <CaseStudyCard study={study} onOpen={handleOpen} />
             </div>
           ))}

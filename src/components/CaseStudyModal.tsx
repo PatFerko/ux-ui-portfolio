@@ -219,9 +219,9 @@ export function CaseStudyModal({
               aria-hidden="true"
             />
 
-            <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
+            <motion.div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 sm:p-8 pointer-events-none">
               <motion.div
-                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gray-900 shadow-2xl pointer-events-auto"
+                className="relative w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto rounded-none sm:rounded-2xl bg-white dark:bg-gray-900 shadow-2xl pointer-events-auto"
                 variants={panelVariants}
                 initial="hidden"
                 animate="visible"
@@ -437,7 +437,7 @@ export function CaseStudyModal({
                                   ))}
                               </ul>
                             ) : step.phase === "flow" ? (
-                              <div className="flex gap-6 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm text-gray-600 dark:text-gray-400 leading-snug">
                                 {step.description
                                   .split("\n\n\n\n")
                                   .map((para, pi) => (
@@ -606,7 +606,7 @@ export function CaseStudyModal({
                       </h3>
                       <div className="space-y-4">
                         {study.beforeAfterVisuals.map((pair, i) => (
-                          <div key={i} className="grid grid-cols-2 gap-4">
+                          <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                               <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
                                 Before
