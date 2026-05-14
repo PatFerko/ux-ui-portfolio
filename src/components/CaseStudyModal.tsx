@@ -64,12 +64,14 @@ export function CaseStudyModal({
     { src: string; alt: string }[]
   >([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<"uxui" | "product">("uxui");
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
     if (isOpen) {
       if (!dialog.open) dialog.showModal();
+      setActiveTab("uxui");
       setTimeout(() => closeButtonRef.current?.focus(), 50);
     } else {
       if (dialog.open) dialog.close();
@@ -240,6 +242,31 @@ export function CaseStudyModal({
                     <h2 className="text-2xl font-bold text-violet-900 dark:text-violet-300 leading-tight">
                       {study.title}
                     </h2>
+                    {/* UX/UI — Product Thinking toggle */}
+                    <div className="flex items-center gap-1 mt-4 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 w-fit">
+                      <button
+                        onClick={() => setActiveTab("uxui")}
+                        className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                          activeTab === "uxui"
+                            ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
+                            : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                        }`}
+                        aria-pressed={activeTab === "uxui"}
+                      >
+                        UX/UI
+                      </button>
+                      <button
+                        onClick={() => setActiveTab("product")}
+                        className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                          activeTab === "product"
+                            ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
+                            : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                        }`}
+                        aria-pressed={activeTab === "product"}
+                      >
+                        Product Thinking
+                      </button>
+                    </div>
                     <div className="flex flex-wrap gap-2 mt-3">
                       {study.tags.map((tag) => (
                         <span
@@ -277,6 +304,16 @@ export function CaseStudyModal({
 
                 {/* Content */}
                 <div className="px-6 sm:px-8 py-8 space-y-10">
+
+                  {/* UX/UI tab — placeholder for design visuals */}
+                  {activeTab === "uxui" && (
+                    <div className="min-h-[400px] flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">
+                      {/* Design visuals coming soon */}
+                    </div>
+                  )}
+
+                  {/* Product Thinking tab — existing content */}
+                  {activeTab === "product" && (<>
                   {/* Context */}
                   {(study.overview || study.introduction) && (
                     <section
@@ -713,6 +750,7 @@ export function CaseStudyModal({
                       )}
                     </section>
                   )}
+                  </>)}
                 </div>
               </motion.div>
             </motion.div>
