@@ -10,6 +10,8 @@ export interface CaseStudy {
   tags: string[];
   thumbnail: string;
   thumbnailIsVideo: boolean;
+  heroImage?: string;
+  tagline?: string;
   overview?: string;
   introduction?: string;
   problemStatement: string;
@@ -21,6 +23,16 @@ export interface CaseStudy {
   processLabel?: string;
   learnings?: string;
   impact?: string;
+  uxui?: {
+    context?: string;
+    userPainPoints?: string;
+    uxGoal?: string;
+    uxDecisions?: string;
+    userFlow?: string;
+    accessibilityClarity?: string;
+    learnings?: string;
+    finalImpact?: string;
+  };
   processNarrative: ProcessStep[];
   beforeAfterVisuals: { before: string; after: string }[];
   metrics: string[];

@@ -242,41 +242,6 @@ export function CaseStudyModal({
                     <h2 className="text-2xl font-bold text-violet-900 dark:text-violet-300 leading-tight">
                       {study.title}
                     </h2>
-                    {/* UX/UI — Product Thinking toggle */}
-                    <div className="flex items-center gap-1 mt-4 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 w-fit">
-                      <button
-                        onClick={() => setActiveTab("uxui")}
-                        className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-                          activeTab === "uxui"
-                            ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
-                            : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                        }`}
-                        aria-pressed={activeTab === "uxui"}
-                      >
-                        UX/UI
-                      </button>
-                      <button
-                        onClick={() => setActiveTab("product")}
-                        className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-                          activeTab === "product"
-                            ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
-                            : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                        }`}
-                        aria-pressed={activeTab === "product"}
-                      >
-                        Product Thinking
-                      </button>
-                    </div>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {study.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                   {/* Larger close button for better touch target */}
                   <button
@@ -303,12 +268,215 @@ export function CaseStudyModal({
                 </div>
 
                 {/* Content */}
+                {/* Hero section — two column: text left, image right */}
+                {study.heroImage ? (
+                  <div className="flex flex-col sm:flex-row items-stretch gap-0">
+                    {/* Text side */}
+                    <div className="flex-1 px-6 sm:px-8 py-6 flex flex-col justify-center">
+                      {study.tagline && (
+                        <p className="text-sm italic text-gray-500 dark:text-gray-400 leading-relaxed">
+                          {study.tagline}
+                        </p>
+                      )}
+                    </div>
+                    {/* Image side */}
+                    <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-800 sm:rounded-none">
+                      <img
+                        src={study.heroImage}
+                        alt={`${study.title} hero`}
+                        className="w-full h-48 sm:h-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  /* No hero image — just show tags below header */
+                  study.tags.length > 0 && (
+                    <div className="px-6 sm:px-8 pb-4 flex flex-wrap gap-2">
+                      {study.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )
+                )}
+
+                {/* Toggle — below hero, above tab content */}
+                <div className="px-6 sm:px-8 py-4 border-b border-gray-100 dark:border-gray-800">
+                  <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1 w-fit border border-gray-200 dark:border-gray-700">
+                    <button
+                      onClick={() => setActiveTab("uxui")}
+                      className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                        activeTab === "uxui"
+                          ? "bg-indigo-600 text-white shadow-md"
+                          : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      }`}
+                      aria-pressed={activeTab === "uxui"}
+                    >
+                      UX/UI
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("product")}
+                      className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                        activeTab === "product"
+                          ? "bg-indigo-600 text-white shadow-md"
+                          : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      }`}
+                      aria-pressed={activeTab === "product"}
+                    >
+                      Product Thinking
+                    </button>
+                  </div>
+                </div>
+
                 <div className="px-6 sm:px-8 py-8 space-y-10">
 
-                  {/* UX/UI tab — placeholder for design visuals */}
+                  {/* UX/UI tab */}
                   {activeTab === "uxui" && (
-                    <div className="min-h-[400px] flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">
-                      {/* Design visuals coming soon */}
+                    <div className="space-y-6">
+                      {/* Tags */}
+                      {study.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {study.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {([
+                        { key: "context",             label: "Context",                value: study.uxui?.context,             bg: "rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1" },
+                        { key: "userPainPoints",      label: "User Pain Points",       value: study.uxui?.userPainPoints,      bg: "rounded-xl bg-amber-50/40 dark:bg-amber-950/10 p-5 -mx-1" },
+                        { key: "uxGoal",              label: "UX Goal",                value: study.uxui?.uxGoal,              bg: "rounded-xl bg-violet-50/50 dark:bg-violet-950/20 p-5 -mx-1" },
+                        { key: "uxDecisions",         label: "UX Decisions",           value: study.uxui?.uxDecisions,         bg: "rounded-xl bg-slate-50/60 dark:bg-slate-800/30 p-5 -mx-1" },
+                        { key: "userFlow",            label: "User Flow",              value: study.uxui?.userFlow,            bg: "rounded-xl bg-blue-50/40 dark:bg-blue-950/10 p-5 -mx-1" },
+                        { key: "accessibilityClarity",label: "Accessibility & Clarity",value: study.uxui?.accessibilityClarity,bg: "rounded-xl bg-emerald-50/40 dark:bg-emerald-950/10 p-5 -mx-1" },
+                        { key: "learnings",           label: "Learnings",              value: study.uxui?.learnings,           bg: "rounded-xl bg-rose-50/30 dark:bg-rose-950/10 p-5 -mx-1" },
+                        { key: "finalImpact",         label: "Impact",                 value: study.uxui?.finalImpact,         bg: "rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1" },
+                      ] as { key: string; label: string; value?: string; bg: string }[]).map(({ key, label, value, bg }) => (
+                        <section key={key} className={bg}>
+                          <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
+                            {label}
+                          </h3>
+                          {value ? (
+                            <div className="space-y-3">
+                              {value.includes("|") ? (
+                                value.split("|").filter(Boolean)[0].startsWith("##") ? (
+                                  <div className="space-y-6">
+                                    {value.split("|").filter(Boolean).map((item, i) => {
+                                      const match = item.match(/^##(.+?)##(.+?)(?:##img##(.+)|##imgbelow##(.+)|##imgleft##(.+)|##imgsmall##(.+)|##imgleftsmall##(.+)|##imgleft2##(.+?)|##imgbelow2##(.+?))?$/s);
+                                      if (match) {
+                                        const imgRight = match[3];
+                                        const imgBelow = match[4];
+                                        const imgLeft = match[5];
+                                        const imgSmall = match[6];
+                                        const imgLeftSmall = match[7];
+                                        const imgLeft2 = match[8] ? match[8].split(";").filter(Boolean) : null;
+                                        const imgBelow2 = match[9] ? match[9].split(";").filter(Boolean) : null;
+                                        const hasInline = !!(imgRight || imgLeft || imgSmall || imgLeftSmall || imgLeft2);
+                                        return (
+                                          <div key={i} className={hasInline ? "flex flex-col sm:flex-row gap-6 items-start py-2" : "py-1"}>
+                                            {(imgLeft || imgLeftSmall) && (
+                                              <div className={`flex-shrink-0 p-1 mt-1 ${imgLeftSmall ? "sm:w-16" : "sm:w-28"}`}>
+                                                <img
+                                                  src={imgLeft || imgLeftSmall}
+                                                  alt={match[1]}
+                                                  className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                  onClick={() => openLightbox((imgLeft || imgLeftSmall)!, match[1])}
+                                                />
+                                              </div>
+                                            )}
+                                            {imgLeft2 && (
+                                              <div className="flex gap-3 flex-shrink-0 mt-1 items-start">
+                                                {imgLeft2.map((src, idx) => (
+                                                  <div key={idx} className="w-16 flex-shrink-0">
+                                                    <img
+                                                      src={src.trim()}
+                                                      alt={`${match[1]} ${idx + 1}`}
+                                                      className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                      onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`)}
+                                                    />
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+                                            <div className={hasInline ? "flex-1" : ""}>
+                                              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                                                {match[1]}
+                                              </h4>
+                                              <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                                                {match[2]}
+                                              </p>
+                                              {imgBelow && (
+                                                <div className="mt-4 w-28">
+                                                  <img
+                                                    src={imgBelow}
+                                                    alt={match[1]}
+                                                    className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                    onClick={() => openLightbox(imgBelow, match[1])}
+                                                  />
+                                                </div>
+                                              )}
+                                              {imgBelow2 && (
+                                                <div className="flex gap-3 mt-4 items-start">
+                                                  {imgBelow2.map((src, idx) => (
+                                                    <div key={idx} className="w-16 flex-shrink-0">
+                                                      <img
+                                                        src={src.trim()}
+                                                        alt={`${match[1]} ${idx + 1}`}
+                                                        className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                        onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`)}
+                                                      />
+                                                    </div>
+                                                  ))}
+                                                </div>
+                                              )}
+                                            </div>
+                                            {(imgRight || imgSmall) && (
+                                              <div className={`flex-shrink-0 p-1 mt-1 ${imgSmall ? "sm:w-16" : "sm:w-28"}`}>
+                                                <img
+                                                  src={imgRight || imgSmall}
+                                                  alt={match[1]}
+                                                  className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                  onClick={() => openLightbox((imgRight || imgSmall)!, match[1])}
+                                                />
+                                              </div>
+                                            )}
+                                          </div>
+                                        );
+                                      }
+                                      return <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{item}</p>;
+                                    })}
+                                  </div>
+                                ) : (
+                                  <ul className="space-y-2">
+                                    {value.split("|").filter(Boolean).map((item, i) => (
+                                      <li key={i} className="flex gap-2.5 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                                        <span className="text-indigo-400 flex-shrink-0 mt-1">•</span>
+                                        <span>{item}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )
+                              ) : (
+                                value.split("\n\n").map((para, i) => (
+                                  <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    {para}
+                                  </p>
+                                ))
+                              )}
+                            </div>
+                          ) : (
+                            <div className="min-h-[48px] rounded-xl bg-white/60 dark:bg-gray-800/50 border border-dashed border-gray-200 dark:border-gray-700" />
+                          )}
+                        </section>
+                      ))}
                     </div>
                   )}
 

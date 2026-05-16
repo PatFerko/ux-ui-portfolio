@@ -1,11 +1,13 @@
 [
   {
     "id": "fintech-dashboard",
-    "title": "BreakfastFlow: Reducing Peak-Time Congestion Through Behavioral Booking",
+    "title": "Improving Breakfast Flow Through Occupancy Visibility & Flexible Booking",
     "shortDescription": "A QR-based booking system that helps hotel guests avoid crowded breakfast hours using real-time availability and flexible booking.",
-    "tags": [],
+    "tags": ["UX/UI", "Service Design", "Hospitality", "Mobile Experience"],
     "thumbnail": "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
     "thumbnailIsVideo": false,
+    "heroImage": "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
+    "tagline": "A hospitality UX concept designed to reduce breakfast congestion through real-time occupancy visibility and flexible reservation interactions.",
     "overviewPoints": [
       "UX/UI Designer",
       "Shift Management System",
@@ -17,6 +19,16 @@
     "keyInsight": "Guests tend to choose the most convenient visible option rather than planning ahead, which leads to clustering during peak times.",
     "processLabel": "Decision",
     "processIntro": "I prioritised influencing user behaviour through real-time availability and visual cues, instead of enforcing strict booking rules.",
+    "uxui": {
+      "context": "During busy breakfast hours, guests often experience overcrowding, long waiting times, and inconsistent buffet availability.\n\nThe goal was to create a smoother and less stressful breakfast experience through better occupancy visibility and lightweight reservation interactions, while also reducing operational pressure on staff during peak periods.",
+      "userPainPoints": "Guests tend to choose familiar breakfast times without clear visibility into real-time occupancy patterns|Peak-time congestion creates frustration for both guests and staff|Guests trying to avoid crowded periods often lack flexible alternatives|Traditional reservation systems often feel too rigid for spontaneous guest behaviour|Staff experience increased operational pressure during high-demand periods",
+      "uxGoal": "Design an optional and intuitive booking experience that helps guests make better timing decisions without introducing unnecessary friction or restrictive reservation rules.",
+      "uxDecisions": "##Occupancy Visibility##Used simple occupancy states (quiet, steady, full) with colour indicators to make crowd levels immediately understandable at a glance.##img##/resources/Bft-App/OccupancyColours.png|##Low-Friction Booking Flow##Reduced unnecessary steps to keep the reservation process quick and approachable during fast decision-making moments.##imgleft##/resources/Bft-App/Flow7.png|##Alternative Suggestions##When certain time slots become unavailable, nearby alternatives remain clearly visible and easy to select, helping users continue the booking flow without unnecessary frustration.##imgsmall##/resources/Bft-App/Booking.png|##Mobile-First Interaction##Designed primarily for mobile use, since guests are likely to access the system quickly through QR codes within the hotel environment.##imgleft2##/resources/Bft-App/LandingPage0.png;/resources/Bft-App/LandingPage1.png|##Cross-Platform Exploration##A desktop overview was also explored to support guests accessing the system through laptops or in-room devices.##imgbelow2##/resources/Bft-App/Overview-iPhoneMockup.png;/resources/Bft-App/Desktop-Overview1.png",
+      "userFlow": "The experience guides users from QR scan to reservation confirmation through a minimal number of decisions.\n\nEach step was designed to reduce cognitive load while maintaining visibility into availability and flexibility.",
+      "accessibilityClarity": "The interface prioritises large touch targets, clear visual hierarchy, and glanceable occupancy indicators to support fast interaction in real-world hospitality environments.",
+      "learnings": "Users respond more naturally to visible guidance than enforced restrictions|Reducing friction can improve adoption in operational environments|Balancing flexibility with operational reliability is essential in service-based systems|UX decisions strongly influence perceived service quality during high-stress moments",
+      "finalImpact": "The concept redistributes breakfast demand across time slots, helping reduce congestion while improving both guest experience and operational flow."
+    },
     "processNarrative": [
       {
         "phase": "solution",
