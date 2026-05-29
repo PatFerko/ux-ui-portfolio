@@ -344,7 +344,7 @@ export function CaseStudyModal({
                       }`}
                       aria-pressed={activeTab === "product"}
                     >
-                      Product Thinking
+                      Product Decisions
                     </button>
                   </div>
                 </div>
@@ -580,6 +580,28 @@ export function CaseStudyModal({
 
                   {/* Product Thinking tab — existing content */}
                   {activeTab === "product" && (<>
+                  {/* Observation from hospitality experience */}
+                  {study.observationFromExperience && (
+                    <section
+                      aria-labelledby="observation-heading"
+                      className="rounded-xl bg-emerald-50/40 dark:bg-emerald-950/10 p-5 -mx-1"
+                    >
+                      <h3
+                        id="observation-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
+                      >
+                        Observation from Hospitality Experience
+                      </h3>
+
+                      <div className="space-y-3">
+                        {study.observationFromExperience.split("\n\n").map((para, i) => (
+                          <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                            {renderRichText(para)}
+                          </p>
+                        ))}
+                      </div>
+                    </section>
+                  )}
                   {/* Context */}
                   {(study.overview || study.introduction) && (
                     <section
@@ -755,9 +777,26 @@ export function CaseStudyModal({
                               <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
                                 {step.description
                                   .split("\n\n")
-                                  .map((para, pi) => (
-                                    <p key={pi}>{renderRichText(para)}</p>
-                                  ))}
+                                  .map((para, pi) => {
+                                    const quoteMatch = para.match(/^\{\{quote:(.+)\}\}$/s);
+                                    if (quoteMatch) {
+                                      const quoteLines = quoteMatch[1].split("\\n");
+                                      return (
+                                        <blockquote key={pi} className="relative text-center my-6 py-4 px-6">
+                                          <span className="absolute -top-2 left-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&ldquo;</span>
+                                          <div className="space-y-3">
+                                            {quoteLines.map((line, li) => (
+                                              <p key={li} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-relaxed italic">
+                                                {line}
+                                              </p>
+                                            ))}
+                                          </div>
+                                          <span className="absolute -bottom-2 right-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&rdquo;</span>
+                                        </blockquote>
+                                      );
+                                    }
+                                    return <p key={pi} className="text-justify">{renderRichText(para)}</p>;
+                                  })}
                               </div>
                             )}
 

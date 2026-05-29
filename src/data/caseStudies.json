@@ -15,6 +15,7 @@
       "Staff scheduling & communication"
     ],
     "overview": "During peak breakfast hours, guests arriving at the same time often cause overcrowding, long wait times, and **service breakdown**.",
+    "observationFromExperience": "Having worked in hospitality environments for several years, I repeatedly observed **breakfast service becoming a bottleneck** during peak hours.\n\nGuests naturally gravitated toward the most convenient and visible options, creating **demand clustering**, longer wait times, and increased operational pressure on staff.\n\nThis observation became the foundation for exploring how **visibility and lightweight behavioral guidance** could improve flow without restricting user choice.",
     "introduction": "Based on my experience working in gastronomy and hotel environments, I observed how peak hours often become overcrowded, leading to long wait times, overwhelmed staff, and a poor guest experience.",
     "problemStatement": "Guests tend to arrive at similar times due to a lack of visibility into occupancy, leading to overcrowding and frustration.\n\nAt the same time, staff lack tools to manage demand and distribute guest flow effectively.",
     "keyInsight": "Guests tend to choose the most convenient visible option rather than planning ahead, which leads to clustering during peak times.",
@@ -35,7 +36,7 @@
     "processNarrative": [
       {
         "phase": "solution",
-        "description": "Designed a QR-based booking system that redistributes demand by guiding guests toward less crowded time slots using real-time availability and visual cues. Guests can explore occupancy levels, identify peak times, and optionally reserve a slot while retaining flexibility.\n\nInstead of controlling users, the system guides their decisions to improve overall flow.",
+        "description": "Designed a QR-based booking system that redistributes demand by guiding guests toward less crowded time slots using real-time availability and visual cues. Guests can explore occupancy levels, identify peak times, and optionally reserve a slot while retaining flexibility.\n\n{{quote:Guide behaviour, don\u2019t enforce it.\\nInstead of controlling users, the system guides their decisions to improve overall flow.}}",
         "assets": []
       },
       {
@@ -87,7 +88,7 @@
   },
   {
     "id": "health-app",
-    "title": "Reducing Scheduling Conflicts in Hospitality Through Real-Time Shift Management",
+    "title": "Reducing Scheduling Conflicts with Flexible Shift Swaps",
     "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
     "tags": [],
     "thumbnail": "/resources/Shift-App/ScheduleMockup.png",

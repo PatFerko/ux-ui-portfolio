@@ -14,6 +14,7 @@ export interface CaseStudy {
   tagline?: string;
   backgroundNote?: string;
   overview?: string;
+  observationFromExperience?: string;
   introduction?: string;
   problemStatement: string;
   keyInsight: string;
@@ -104,6 +105,11 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
       initial="rest"
       whileHover={prefersReducedMotion ? undefined : "hover"}
       animate="rest"
+      onClick={handleOpen}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`Open ${study.title} case study`}
       {...(prefersReducedMotion ? {} : hoverVariants)}
     >
       {/* Thumbnail */}
@@ -224,8 +230,8 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
 
         {/* Open modal button */}
         <button
-          onClick={handleOpen}
-          onKeyDown={handleKeyDown}
+          onClick={(e) => { e.stopPropagation(); handleOpen(); }}
+          onKeyDown={(e) => { e.stopPropagation(); handleKeyDown(e); }}
           className="mt-4 w-full py-2 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
           aria-label={`Open ${study.title} case study`}
         >
