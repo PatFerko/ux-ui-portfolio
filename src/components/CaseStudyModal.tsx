@@ -64,6 +64,7 @@ export function CaseStudyModal({
     { src: string; alt: string }[]
   >([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxSmall, setLightboxSmall] = useState(false);
   const [activeTab, setActiveTab] = useState<"uxui" | "product">("uxui");
 
   useEffect(() => {
@@ -131,17 +132,20 @@ export function CaseStudyModal({
     alt: string,
     group?: { src: string; alt: string }[],
     index?: number,
+    small?: boolean,
   ) {
     setLightboxSrc(src);
     setLightboxAlt(alt);
     setLightboxGroup(group ?? []);
     setLightboxIndex(index ?? 0);
+    setLightboxSmall(small ?? false);
   }
   function closeLightbox() {
     setLightboxSrc(null);
     setLightboxAlt("");
     setLightboxGroup([]);
     setLightboxIndex(0);
+    setLightboxSmall(false);
   }
   function lightboxPrev() {
     if (lightboxGroup.length <= 1) return;
@@ -239,7 +243,7 @@ export function CaseStudyModal({
                 {/* Header — sticky with scroll shadow */}
                 <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 sm:px-8 py-5 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                   <div className="min-w-0 flex-1">
-                    <h2 className="text-2xl font-bold text-violet-900 dark:text-violet-300 leading-tight">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 leading-tight">
                       {study.title}
                     </h2>
                   </div>
@@ -272,19 +276,19 @@ export function CaseStudyModal({
                 {study.heroImage ? (
                   <div className="flex flex-col sm:flex-row items-stretch gap-0">
                     {/* Text side */}
-                    <div className="flex-1 px-6 sm:px-8 py-6 flex flex-col justify-center">
+                    <div className="flex-1 px-8 sm:px-12 py-6 flex flex-col justify-center">
                       {study.tagline && (
-                        <p className="text-sm italic text-gray-500 dark:text-gray-400 leading-relaxed">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed text-justify">
                           {study.tagline}
                         </p>
                       )}
                     </div>
                     {/* Image side */}
-                    <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-800 sm:rounded-none">
+                    <div className="sm:flex-[1.4] overflow-hidden bg-gray-100 dark:bg-gray-800 sm:rounded-none">
                       <img
                         src={study.heroImage}
                         alt={`${study.title} hero`}
-                        className="w-full h-48 sm:h-full object-cover object-top"
+                        className="w-full h-56 sm:h-full object-cover object-top"
                       />
                     </div>
                   </div>
@@ -302,6 +306,19 @@ export function CaseStudyModal({
                       ))}
                     </div>
                   )
+                )}
+
+                {/* Background note */}
+                {study.backgroundNote && (
+                  <div className="px-6 sm:px-10 py-8 border-b border-gray-100 dark:border-gray-800">
+                    <blockquote className="relative text-center max-w-lg mx-auto">
+                      <span className="absolute -top-4 -left-2 text-4xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&ldquo;</span>
+                      <p className="text-sm italic text-gray-700 dark:text-gray-300 leading-relaxed px-4">
+                        {study.backgroundNote}
+                      </p>
+                      <span className="absolute -bottom-4 -right-2 text-4xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&rdquo;</span>
+                    </blockquote>
+                  </div>
                 )}
 
                 {/* Toggle — below hero, above tab content */}
@@ -355,10 +372,9 @@ export function CaseStudyModal({
                         { key: "userPainPoints",      label: "User Pain Points",       value: study.uxui?.userPainPoints,      bg: "rounded-xl bg-amber-50/40 dark:bg-amber-950/10 p-5 -mx-1" },
                         { key: "uxGoal",              label: "UX Goal",                value: study.uxui?.uxGoal,              bg: "rounded-xl bg-violet-50/50 dark:bg-violet-950/20 p-5 -mx-1" },
                         { key: "uxDecisions",         label: "UX Decisions",           value: study.uxui?.uxDecisions,         bg: "rounded-xl bg-slate-50/60 dark:bg-slate-800/30 p-5 -mx-1" },
+                        { key: "designTradeoffs",     label: "Design Tradeoffs",       value: study.uxui?.designTradeoffs,     bg: "rounded-xl bg-orange-50/40 dark:bg-orange-950/10 p-5 -mx-1" },
                         { key: "userFlow",            label: "User Flow",              value: study.uxui?.userFlow,            bg: "rounded-xl bg-blue-50/40 dark:bg-blue-950/10 p-5 -mx-1" },
                         { key: "accessibilityClarity",label: "Accessibility & Clarity",value: study.uxui?.accessibilityClarity,bg: "rounded-xl bg-emerald-50/40 dark:bg-emerald-950/10 p-5 -mx-1" },
-                        { key: "learnings",           label: "Learnings",              value: study.uxui?.learnings,           bg: "rounded-xl bg-rose-50/30 dark:bg-rose-950/10 p-5 -mx-1" },
-                        { key: "finalImpact",         label: "Impact",                 value: study.uxui?.finalImpact,         bg: "rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1" },
                       ] as { key: string; label: string; value?: string; bg: string }[]).map(({ key, label, value, bg }) => (
                         <section key={key} className={bg}>
                           <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
@@ -370,7 +386,7 @@ export function CaseStudyModal({
                                 value.split("|").filter(Boolean)[0].startsWith("##") ? (
                                   <div className="space-y-6">
                                     {value.split("|").filter(Boolean).map((item, i) => {
-                                      const match = item.match(/^##(.+?)##(.+?)(?:##img##(.+)|##imgbelow##(.+)|##imgleft##(.+)|##imgsmall##(.+)|##imgleftsmall##(.+)|##imgleft2##(.+?)|##imgbelow2##(.+?))?$/s);
+                                      const match = item.match(/^##(.+?)##(.+?)(?:##img##(.+)|##imgbelow##(.+)|##imgleft##(.+)|##imgsmall##(.+)|##imgleftsmall##(.+)|##imgleft2##(.+?)|##imgbelow2##(.+?)|##imgbelowfull##(.+?)|##imgcompact##(.+?))?$/s);
                                       if (match) {
                                         const imgRight = match[3];
                                         const imgBelow = match[4];
@@ -379,7 +395,9 @@ export function CaseStudyModal({
                                         const imgLeftSmall = match[7];
                                         const imgLeft2 = match[8] ? match[8].split(";").filter(Boolean) : null;
                                         const imgBelow2 = match[9] ? match[9].split(";").filter(Boolean) : null;
-                                        const hasInline = !!(imgRight || imgLeft || imgSmall || imgLeftSmall || imgLeft2);
+                                        const imgBelowFull = match[10];
+                                        const imgCompact = match[11];
+                                        const hasInline = !!(imgRight || imgLeft || imgSmall || imgLeftSmall || imgLeft2 || imgCompact);
                                         return (
                                           <div key={i} className={hasInline ? "flex flex-col sm:flex-row gap-6 items-start py-2" : "py-1"}>
                                             {(imgLeft || imgLeftSmall) && (
@@ -394,23 +412,26 @@ export function CaseStudyModal({
                                             )}
                                             {imgLeft2 && (
                                               <div className="flex gap-3 flex-shrink-0 mt-1 items-start">
-                                                {imgLeft2.map((src, idx) => (
-                                                  <div key={idx} className="w-16 flex-shrink-0">
-                                                    <img
-                                                      src={src.trim()}
-                                                      alt={`${match[1]} ${idx + 1}`}
-                                                      className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
-                                                      onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`)}
-                                                    />
-                                                  </div>
-                                                ))}
+                                                {imgLeft2.map((src, idx) => {
+                                                  const group = imgLeft2.map((s, gi) => ({ src: s.trim(), alt: `${match[1]} ${gi + 1}` }));
+                                                  return (
+                                                    <div key={idx} className="w-16 flex-shrink-0">
+                                                      <img
+                                                        src={src.trim()}
+                                                        alt={`${match[1]} ${idx + 1}`}
+                                                        className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                        onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`, group, idx)}
+                                                      />
+                                                    </div>
+                                                  );
+                                                })}
                                               </div>
                                             )}
                                             <div className={hasInline ? "flex-1" : ""}>
                                               <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                                                 {match[1]}
                                               </h4>
-                                              <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                                              <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed text-justify">
                                                 {match[2]}
                                               </p>
                                               {imgBelow && (
@@ -425,33 +446,46 @@ export function CaseStudyModal({
                                               )}
                                               {imgBelow2 && (
                                                 <div className="flex gap-3 mt-4 items-start">
-                                                  {imgBelow2.map((src, idx) => (
-                                                    <div key={idx} className="w-16 flex-shrink-0">
-                                                      <img
-                                                        src={src.trim()}
-                                                        alt={`${match[1]} ${idx + 1}`}
-                                                        className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
-                                                        onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`)}
-                                                      />
-                                                    </div>
-                                                  ))}
+                                                  {imgBelow2.map((src, idx) => {
+                                                    const group = imgBelow2.map((s, gi) => ({ src: s.trim(), alt: `${match[1]} ${gi + 1}` }));
+                                                    return (
+                                                      <div key={idx} className="w-16 flex-shrink-0">
+                                                        <img
+                                                          src={src.trim()}
+                                                          alt={`${match[1]} ${idx + 1}`}
+                                                          className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                          onClick={() => openLightbox(src.trim(), `${match[1]} ${idx + 1}`, group, idx)}
+                                                        />
+                                                      </div>
+                                                    );
+                                                  })}
+                                                </div>
+                                              )}
+                                              {imgBelowFull && (
+                                                <div className="mt-6 w-full">
+                                                  <img
+                                                    src={imgBelowFull}
+                                                    alt={match[1]}
+                                                    className="w-full rounded-2xl object-cover shadow-lg border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-90 hover:shadow-xl transition-all duration-300"
+                                                    onClick={() => openLightbox(imgBelowFull, match[1])}
+                                                  />
                                                 </div>
                                               )}
                                             </div>
-                                            {(imgRight || imgSmall) && (
+                                            {(imgRight || imgSmall || imgCompact) && (
                                               <div className={`flex-shrink-0 p-1 mt-1 ${imgSmall ? "sm:w-16" : "sm:w-28"}`}>
                                                 <img
-                                                  src={imgRight || imgSmall}
+                                                  src={imgRight || imgSmall || imgCompact}
                                                   alt={match[1]}
                                                   className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
-                                                  onClick={() => openLightbox((imgRight || imgSmall)!, match[1])}
+                                                  onClick={() => openLightbox((imgRight || imgSmall || imgCompact)!, match[1], undefined, undefined, !!imgCompact)}
                                                 />
                                               </div>
                                             )}
                                           </div>
                                         );
                                       }
-                                      return <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{item}</p>;
+                                      return <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify">{item}</p>;
                                     })}
                                   </div>
                                 ) : (
@@ -466,7 +500,7 @@ export function CaseStudyModal({
                                 )
                               ) : (
                                 value.split("\n\n").map((para, i) => (
-                                  <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                                  <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                                     {para}
                                   </p>
                                 ))
@@ -477,6 +511,70 @@ export function CaseStudyModal({
                           )}
                         </section>
                       ))}
+
+                      {/* Showcase image */}
+                      {study.uxui?.showcaseImage && (
+                        <div className="my-8 -mx-1">
+                          <img
+                            src={study.uxui.showcaseImage}
+                            alt={`${study.title} showcase`}
+                            className="w-full rounded-2xl object-cover shadow-lg border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-90 hover:shadow-xl transition-all duration-300"
+                            onClick={() => openLightbox(study.uxui!.showcaseImage!, `${study.title} showcase`)}
+                          />
+                        </div>
+                      )}
+
+                      {/* Learnings */}
+                      {study.uxui?.learnings && (
+                        <section className="rounded-xl bg-rose-50/30 dark:bg-rose-950/10 p-5 -mx-1">
+                          <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
+                            Learnings
+                          </h3>
+                          <div className="flex flex-col sm:flex-row gap-6 items-start">
+                            <ul className="space-y-2 flex-1">
+                              {study.uxui.learnings.split("|").filter(Boolean).map((item, i) => (
+                                <li key={i} className="flex gap-2.5 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                                  <span className="text-indigo-400 flex-shrink-0 mt-1">•</span>
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="flex-shrink-0 w-20 sm:w-24">
+                              <img
+                                src="/resources/Bft-App/Confirmation.png"
+                                alt="Confirmation screen"
+                                className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                onClick={() => openLightbox("/resources/Bft-App/Confirmation.png", "Confirmation screen")}
+                              />
+                            </div>
+                          </div>
+                        </section>
+                      )}
+
+                      {/* Expected Impact */}
+                      {study.uxui?.finalImpact && (
+                        <section className="rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1">
+                          <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
+                            Expected Impact
+                          </h3>
+                          <div className="space-y-3">
+                            {study.uxui.finalImpact.includes("|") ? (
+                              <ul className="space-y-2">
+                                {study.uxui.finalImpact.split("|").filter(Boolean).map((item, i) => (
+                                  <li key={i} className="flex gap-2.5 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    <span className="text-indigo-400 flex-shrink-0 mt-1">•</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                                {study.uxui.finalImpact}
+                              </p>
+                            )}
+                          </div>
+                        </section>
+                      )}
                     </div>
                   )}
 
@@ -495,7 +593,7 @@ export function CaseStudyModal({
                         Context
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug text-justify">
                         {renderRichText(study.overview ?? "")}
                       </p>
                     </section>
@@ -511,7 +609,7 @@ export function CaseStudyModal({
                     >
                       Problem
                     </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
+                    <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line text-justify">
                       {study.problemStatement}
                     </p>
                   </section>
@@ -552,7 +650,7 @@ export function CaseStudyModal({
                         Decision
                       </h3>
 
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug  whitespace-pre-line">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug  whitespace-pre-line text-justify">
                         {study.designGoal}
                       </p>
                     </section>
@@ -593,7 +691,7 @@ export function CaseStudyModal({
                       >
                         Trade-offs
                       </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line text-justify">
                         {study.tradeoffs}
                       </p>
                     </section>
@@ -609,7 +707,7 @@ export function CaseStudyModal({
                     </h3>
 
                     {study.processIntro && (
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug mb-8">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug mb-8 text-justify">
                         {study.processIntro}
                       </p>
                     )}
@@ -794,7 +892,7 @@ export function CaseStudyModal({
                       >
                         Impact
                       </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug">
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug text-justify">
                         {study.impact}
                       </p>
                     </section>
@@ -942,7 +1040,7 @@ export function CaseStudyModal({
               onClick={closeLightbox}
             >
               <motion.div
-                className="relative max-w-[95vw] max-h-[95vh] flex flex-col items-center"
+                className="relative max-w-[90vw] max-h-[90vh] flex flex-col items-center"
                 initial={
                   prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }
                 }
@@ -956,18 +1054,18 @@ export function CaseStudyModal({
                 <img
                   src={lightboxSrc}
                   alt={lightboxAlt}
-                  className="max-w-full max-h-[85vh] rounded-xl object-contain"
+                  className={`max-w-full rounded-xl object-contain ${lightboxSmall ? "max-h-[40vh]" : "max-h-[85vh]"}`}
                 />
                 {lightboxGroup.length > 1 && (
                   <div className="flex items-center gap-4 mt-3">
                     <button
                       onClick={lightboxPrev}
-                      className="w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="w-8 h-8 rounded-full bg-white/20 dark:bg-gray-700/30 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/30 dark:hover:bg-gray-600/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
                       aria-label="Previous image"
                     >
                       <svg
-                        width="18"
-                        height="18"
+                        width="14"
+                        height="14"
                         viewBox="0 0 18 18"
                         fill="none"
                         aria-hidden="true"
@@ -975,23 +1073,23 @@ export function CaseStudyModal({
                         <path
                           d="M11 14L6 9l5-5"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                       </svg>
                     </button>
-                    <span className="text-sm text-white/80 tabular-nums">
+                    <span className="text-xs text-white/50 tabular-nums">
                       {lightboxIndex + 1} / {lightboxGroup.length}
                     </span>
                     <button
                       onClick={lightboxNext}
-                      className="w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                      className="w-8 h-8 rounded-full bg-white/20 dark:bg-gray-700/30 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/30 dark:hover:bg-gray-600/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
                       aria-label="Next image"
                     >
                       <svg
-                        width="18"
-                        height="18"
+                        width="14"
+                        height="14"
                         viewBox="0 0 18 18"
                         fill="none"
                         aria-hidden="true"
@@ -999,7 +1097,7 @@ export function CaseStudyModal({
                         <path
                           d="M7 4l5 5-5 5"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />

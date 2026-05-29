@@ -12,6 +12,7 @@ export interface CaseStudy {
   thumbnailIsVideo: boolean;
   heroImage?: string;
   tagline?: string;
+  backgroundNote?: string;
   overview?: string;
   introduction?: string;
   problemStatement: string;
@@ -28,8 +29,10 @@ export interface CaseStudy {
     userPainPoints?: string;
     uxGoal?: string;
     uxDecisions?: string;
+    designTradeoffs?: string;
     userFlow?: string;
     accessibilityClarity?: string;
+    showcaseImage?: string;
     learnings?: string;
     finalImpact?: string;
   };
