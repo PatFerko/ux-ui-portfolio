@@ -185,7 +185,7 @@ export function GallerySection() {
                 <img
                   src={selectedItem.src}
                   alt={selectedItem.alt}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto max-h-[70vh] object-contain"
                 />
                 {/* Navigation arrows */}
                 <button

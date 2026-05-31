@@ -60,7 +60,7 @@ export function CaseStudiesSection() {
           aria-label="Case studies"
         >
           {caseStudies.map((study) => (
-            <div key={study.id} role="listitem" className="sm:snap-start sm:flex-shrink-0">
+            <div key={study.id} role="listitem" className="sm:snap-start sm:flex-shrink-0 flex">
               <CaseStudyCard study={study} onOpen={handleOpen} />
             </div>
           ))}

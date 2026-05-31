@@ -102,7 +102,7 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="relative flex-shrink-0 w-full sm:w-72 md:w-80 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 cursor-pointer focus-within:ring-2 focus-within:ring-indigo-500"
+      className="relative flex-shrink-0 w-full sm:w-72 md:w-80 min-h-[30rem] rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50 border border-gray-100 dark:border-gray-700 cursor-pointer focus-within:ring-2 focus-within:ring-indigo-500 flex flex-col"
       initial="rest"
       whileHover={prefersReducedMotion ? undefined : "hover"}
       animate="rest"
@@ -148,92 +148,30 @@ export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
       </div>
 
       {/* Card body */}
-      <div className="p-5">
-        {/* Design / Code toggle */}
-        {study.codeView && (
-          <div className="flex items-center gap-1 mb-3 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 w-fit">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsCodeView(false);
-              }}
-              className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-                !isCodeView
-                  ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-              }`}
-              aria-pressed={!isCodeView}
-            >
-              Design
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsCodeView(true);
-              }}
-              className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-                isCodeView
-                  ? "bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-              }`}
-              aria-pressed={isCodeView}
-            >
-              Tools
-            </button>
-          </div>
-        )}
-
-        <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2 leading-snug">
+      <div className="px-5 pt-5 pb-10 flex flex-col flex-1">
+        <h3 className="text-base font-bold text-gray-900 dark:text-white mb-5 leading-snug">
           {study.title}
         </h3>
 
-        {isCodeView && study.codeView ? (
-          <div className="space-y-2">
-            <div className="flex flex-wrap gap-1">
-              {study.codeView.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-0.5 rounded text-xs bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-mono"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <ul className="space-y-1">
-              {study.codeView.highlights.map((h, i) => (
-                <li
-                  key={i}
-                  className="text-xs text-gray-600 dark:text-gray-400 flex gap-1.5"
-                >
-                  <span className="text-indigo-400 mt-0.5">▸</span>
-                  {h}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
-              {study.shortDescription}
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {study.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-0.5 rounded-full text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </>
-        )}
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
+          {study.shortDescription}
+        </p>
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {study.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2 py-0.5 rounded-full text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
 
         {/* Open modal button */}
         <button
           onClick={(e) => { e.stopPropagation(); handleOpen(); }}
           onKeyDown={(e) => { e.stopPropagation(); handleKeyDown(e); }}
-          className="mt-4 w-full py-2 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          className="mt-auto w-full py-3 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 text-center"
           aria-label={`Open ${study.title} case study`}
         >
           View Details

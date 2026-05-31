@@ -1,14 +1,14 @@
 [
   {
     "id": "fintech-dashboard",
-    "title": "Improving Breakfast Flow Through Occupancy Visibility & Flexible Booking",
+    "title": "Reducing Breakfast Congestion Through Occupancy Visibility",
     "shortDescription": "A QR-based booking system that helps hotel guests avoid crowded breakfast hours using real-time availability and flexible booking.",
-    "tags": ["UX/UI", "Service Design", "Hospitality", "Mobile Experience"],
+    "tags": ["UX/UI", "Service Design", "Hospitality", "Product Thinking"],
     "thumbnail": "/resources/Bft-App/Overview-iPhoneMockup-card.png",
     "thumbnailIsVideo": false,
     "heroImage": "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
     "tagline": "A hospitality UX concept designed to reduce breakfast congestion through real-time occupancy visibility and flexible reservation interactions.",
-    "backgroundNote": "Having worked in hospitality environments, I became interested in how small operational bottlenecks strongly influence guest experience. Breakfast service repeatedly stood out as a moment where user behaviour, operational pressure, and service quality intersect.",
+    "backgroundNote": "Having worked in hospitality environments, I became interested in how small operational challenges can significantly shape the guest experience. Breakfast service repeatedly stood out as a moment where guest behaviour, service quality, and operational efficiency intersect.",
     "overviewPoints": [
       "UX/UI Designer",
       "Shift Management System",
@@ -74,10 +74,12 @@
     "id": "health-app",
     "title": "Reducing Scheduling Conflicts with Flexible Shift Swaps",
     "shortDescription": "Coordinating staff schedules while allowing flexible shift swaps with manager approval.",
-    "tags": [],
+    "tags": ["UX/UI", "Product Design", "Workflow Design", "Workforce Management"],
     "thumbnail": "/resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
     "heroImage": "/resources/Shift-App/WorkerMockup.png",
+    "tagline": "A hospitality workforce management concept designed to reduce scheduling conflicts through flexible shift swaps, coverage validation, and approval-based workflows.",
+    "backgroundNote": "Through observing day-to-day scheduling challenges in hospitality, I became interested in how digital tools could support employee flexibility without compromising operational reliability.",
     "observationFromExperience": "While working in hospitality, I frequently observed staff relying on **WhatsApp messages, printed schedules, and manager coordination** to handle shift changes.\n\n**Last-minute updates** often created confusion, increased workload for managers, and made **staffing difficult to track**.",
     "uxui": {
       "uxDecisions": "##Process##Designed a mobile-first shift management experience focused on reducing coordination effort and simplifying shift swaps for hospitality staff.|##User Flow##The swap flow guides staff from selecting a shift through partner selection, system validation, and manager approval — with clear feedback at each step.##imgleft##/resources/Shift-App/MyFlowFinal.png",
