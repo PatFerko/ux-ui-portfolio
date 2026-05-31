@@ -434,7 +434,7 @@ export function CaseStudyModal({
                                                 <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                                                   {match[1]}
                                                 </h4>
-                                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-justify">
                                                   {match[2]}
                                                 </p>
                                               </div>
