@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { LazyImage } from "./LazyImage";
 import { LazyVideo } from "./LazyVideo";
@@ -70,7 +70,6 @@ interface CaseStudyCardProps {
 }
 
 export function CaseStudyCard({ study, onOpen }: CaseStudyCardProps) {
-  const [isCodeView, setIsCodeView] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
 
