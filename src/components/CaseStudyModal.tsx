@@ -373,18 +373,19 @@ export function CaseStudyModal({
                         { key: "uxGoal",              label: "UX Goal",                value: study.uxui?.uxGoal,              bg: "rounded-xl bg-violet-50/50 dark:bg-violet-950/20 p-5 -mx-1" },
                         { key: "uxDecisions",         label: "UX Decisions",           value: study.uxui?.uxDecisions,         bg: "rounded-xl bg-slate-50/60 dark:bg-slate-800/30 p-5 -mx-1" },
                         { key: "designTradeoffs",     label: "Design Tradeoffs",       value: study.uxui?.designTradeoffs,     bg: "rounded-xl bg-orange-50/40 dark:bg-orange-950/10 p-5 -mx-1" },
-                        { key: "userFlow",            label: "User Flow",              value: study.uxui?.userFlow,            bg: "rounded-xl bg-blue-50/40 dark:bg-blue-950/10 p-5 -mx-1" },
+                        { key: "userFlow",            label: study.id === "health-app" ? "Final Screens" : "User Flow", value: study.uxui?.userFlow, bg: "rounded-xl bg-blue-50/40 dark:bg-blue-950/10 p-5 -mx-1" },
                         { key: "accessibilityClarity",label: "Accessibility & Clarity",value: study.uxui?.accessibilityClarity,bg: "rounded-xl bg-emerald-50/40 dark:bg-emerald-950/10 p-5 -mx-1" },
-                      ] as { key: string; label: string; value?: string; bg: string }[]).map(({ key, label, value, bg }) => (
+                      ] as { key: string; label: string; value?: string; bg: string }[]).filter(({ value }) => !!value).map(({ key, label, value: rawValue, bg }) => {
+                        const value = rawValue!;
+                        return (
                         <section key={key} className={bg}>
                           <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
                             {label}
                           </h3>
-                          {value ? (
-                            <div className="space-y-3">
+                          <div className="space-y-3">
                               {value.includes("|") ? (
                                 value.split("|").filter(Boolean)[0].startsWith("##") ? (
-                                  <div className="space-y-6">
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
                                     {value.split("|").filter(Boolean).map((item, i) => {
                                       const match = item.match(/^##(.+?)##(.+?)(?:##img##(.+)|##imgbelow##(.+)|##imgleft##(.+)|##imgsmall##(.+)|##imgleftsmall##(.+)|##imgleft2##(.+?)|##imgbelow2##(.+?)|##imgbelowfull##(.+?)|##imgcompact##(.+?))?$/s);
                                       if (match) {
@@ -398,8 +399,9 @@ export function CaseStudyModal({
                                         const imgBelowFull = match[10];
                                         const imgCompact = match[11];
                                         const hasInline = !!(imgRight || imgLeft || imgSmall || imgLeftSmall || imgLeft2 || imgCompact);
+                                        const isFullWidth = hasInline || !!imgBelowFull || (!imgBelow && !imgBelow2);
                                         return (
-                                          <div key={i} className={hasInline ? "flex flex-col sm:flex-row gap-6 items-start py-2" : "py-1"}>
+                                          <div key={i} className={hasInline ? "flex flex-col sm:flex-row gap-6 items-start py-2 sm:col-span-2" : isFullWidth ? "py-1 sm:col-span-2" : "flex flex-col items-center text-center py-3 h-full"}>
                                             {(imgLeft || imgLeftSmall) && (
                                               <div className={`flex-shrink-0 p-1 mt-1 ${imgLeftSmall ? "sm:w-16" : "sm:w-28"}`}>
                                                 <img
@@ -428,28 +430,30 @@ export function CaseStudyModal({
                                               </div>
                                             )}
                                             <div className={hasInline ? "flex-1" : ""}>
-                                              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                                                {match[1]}
-                                              </h4>
-                                              <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed text-justify">
-                                                {match[2]}
-                                              </p>
+                                              <div className={!hasInline && !isFullWidth ? "min-h-28" : ""}>
+                                                <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                                                  {match[1]}
+                                                </h4>
+                                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                                  {match[2]}
+                                                </p>
+                                              </div>
                                               {imgBelow && (
-                                                <div className="mt-4 w-28">
+                                                <div className="mt-3 w-full flex justify-center">
                                                   <img
                                                     src={imgBelow}
                                                     alt={match[1]}
-                                                    className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                                    className="w-24 rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
                                                     onClick={() => openLightbox(imgBelow, match[1])}
                                                   />
                                                 </div>
                                               )}
                                               {imgBelow2 && (
-                                                <div className="flex gap-3 mt-4 items-start">
+                                                <div className="flex gap-4 mt-4 items-start justify-center">
                                                   {imgBelow2.map((src, idx) => {
                                                     const group = imgBelow2.map((s, gi) => ({ src: s.trim(), alt: `${match[1]} ${gi + 1}` }));
                                                     return (
-                                                      <div key={idx} className="w-16 flex-shrink-0">
+                                                      <div key={idx} className="w-24 flex-shrink-0">
                                                         <img
                                                           src={src.trim()}
                                                           alt={`${match[1]} ${idx + 1}`}
@@ -506,11 +510,8 @@ export function CaseStudyModal({
                                 ))
                               )}
                             </div>
-                          ) : (
-                            <div className="min-h-[48px] rounded-xl bg-white/60 dark:bg-gray-800/50 border border-dashed border-gray-200 dark:border-gray-700" />
-                          )}
                         </section>
-                      ))}
+                      );})}
 
                       {/* Showcase image */}
                       {study.uxui?.showcaseImage && (
@@ -539,14 +540,16 @@ export function CaseStudyModal({
                                 </li>
                               ))}
                             </ul>
-                            <div className="flex-shrink-0 w-20 sm:w-24">
-                              <img
-                                src="/resources/Bft-App/Confirmation.png"
-                                alt="Confirmation screen"
-                                className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
-                                onClick={() => openLightbox("/resources/Bft-App/Confirmation.png", "Confirmation screen")}
-                              />
-                            </div>
+                            {study.id === "fintech-dashboard" && (
+                              <div className="flex-shrink-0 w-20 sm:w-24">
+                                <img
+                                  src="/resources/Bft-App/Confirmation.png"
+                                  alt="Confirmation screen"
+                                  className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                  onClick={() => openLightbox("/resources/Bft-App/Confirmation.png", "Confirmation screen")}
+                                />
+                              </div>
+                            )}
                           </div>
                         </section>
                       )}
@@ -634,6 +637,16 @@ export function CaseStudyModal({
                     <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line text-justify">
                       {study.problemStatement}
                     </p>
+                    {study.id === "fintech-dashboard" && (
+                      <div className="mt-5 w-full sm:w-3/4 mx-auto">
+                        <img
+                          src="/resources/Bft-App/MockupHandsOverview.png"
+                          alt="App mockup showing breakfast overview"
+                          className="w-full rounded-2xl object-cover shadow-lg border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-90 hover:shadow-xl transition-all duration-300"
+                          onClick={() => openLightbox("/resources/Bft-App/MockupHandsOverview.png", "App mockup showing breakfast overview")}
+                        />
+                      </div>
+                    )}
                   </section>
 
                   {/* Key Insight */}
@@ -679,45 +692,63 @@ export function CaseStudyModal({
                   )}
 
                   {/* Solution */}
-                  {study.hypothesis && (
-                    <section
-                      aria-labelledby="hypothesis-heading"
-                      className="p-5 -mx-1"
-                    >
-                      <h3
-                        id="hypothesis-heading"
-                        className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
-                      >
-                        Solution
-                      </h3>
-
-                      <div className="space-y-3">
-                        {study.hypothesis.split("\n\n").map((para, i) => (
-                          <p key={i} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-snug">
-                            {para}
-                          </p>
-                        ))}
-                      </div>
-                    </section>
-                  )}
-
-                  {/* Trade-offs */}
-                  {study.tradeoffs && (
-                    <section
-                      aria-labelledby="tradeoffs-heading"
-                      className="p-5 -mx-1"
-                    >
-                      <h3
-                        id="tradeoffs-heading"
-                        className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
-                      >
-                        Trade-offs
-                      </h3>
-                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line text-justify">
-                        {study.tradeoffs}
-                      </p>
-                    </section>
-                  )}
+                  {study.hypothesis && (() => {
+                    const paras = study.hypothesis.split("\n\n");
+                    const textParas = paras.filter(p => !p.match(/^\{\{quote:(.+)\}\}$/s));
+                    const quoteParas = paras.filter(p => p.match(/^\{\{quote:(.+)\}\}$/s));
+                    return (
+                      <>
+                        <section
+                          aria-labelledby="hypothesis-heading"
+                          className="rounded-xl bg-violet-50/50 dark:bg-violet-950/20 p-5 -mx-1"
+                        >
+                          <h3
+                            id="hypothesis-heading"
+                            className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
+                          >
+                            Solution
+                          </h3>
+                          <div className="flex flex-col sm:flex-row gap-5 items-start">
+                            <div className="flex-1 space-y-4">
+                              {textParas.map((para, i) => (
+                                <p key={i} className="text-base text-gray-800 dark:text-gray-200 leading-snug text-justify">
+                                  {para}
+                                </p>
+                              ))}
+                            </div>
+                            {study.id === "fintech-dashboard" && (
+                              <div className="flex-shrink-0 p-1 mt-1 sm:w-28">
+                                <img
+                                  src="/resources/Bft-App/Booking.png"
+                                  alt="Booking screen"
+                                  className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                  onClick={() => openLightbox("/resources/Bft-App/Booking.png", "Booking screen")}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </section>
+                        {quoteParas.map((para, i) => {
+                          const quoteMatch = para.match(/^\{\{quote:(.+)\}\}$/s);
+                          if (!quoteMatch) return null;
+                          const quoteLines = quoteMatch[1].split("\\n");
+                          return (
+                            <blockquote key={`q${i}`} className="relative text-center my-6 py-5 px-6">
+                              <span className="absolute -top-2 left-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&ldquo;</span>
+                              <div className="space-y-3">
+                                {quoteLines.map((line, li) => (
+                                  <p key={li} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-relaxed italic">
+                                    {line}
+                                  </p>
+                                ))}
+                              </div>
+                              <span className="absolute -bottom-2 right-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&rdquo;</span>
+                            </blockquote>
+                          );
+                        })}
+                      </>
+                    );
+                  })()}
 
                   {/* Process */}
                   <section aria-labelledby="process-heading">
@@ -744,10 +775,45 @@ export function CaseStudyModal({
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-2">
-                              {PHASE_LABELS[step.phase]}
+                              {step.phase === "flow" && study.id === "health-app" ? "System Workflow" : PHASE_LABELS[step.phase]}
                             </h4>
 
-                            {step.phase === "learnings" ? (
+                            {step.phase === "solution" && step.assets.length > 0 ? (
+                              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                                <div className="flex-1 space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                  {step.description
+                                    .split("\n\n")
+                                    .map((para, pi) => {
+                                      const quoteMatch = para.match(/^\{\{quote:(.+)\}\}$/s);
+                                      if (quoteMatch) {
+                                        const quoteLines = quoteMatch[1].split("\\n");
+                                        return (
+                                          <blockquote key={pi} className="relative text-center my-6 py-4 px-6">
+                                            <span className="absolute -top-2 left-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&ldquo;</span>
+                                            <div className="space-y-3">
+                                              {quoteLines.map((line, li) => (
+                                                <p key={li} className="text-base font-medium text-gray-800 dark:text-gray-200 leading-relaxed italic">
+                                                  {line}
+                                                </p>
+                                              ))}
+                                            </div>
+                                            <span className="absolute -bottom-2 right-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&rdquo;</span>
+                                          </blockquote>
+                                        );
+                                      }
+                                      return <p key={pi} className="text-justify">{renderRichText(para)}</p>;
+                                    })}
+                                </div>
+                                <div className="flex-shrink-0 p-1 mt-1 sm:w-24">
+                                  <img
+                                    src={step.assets[0]}
+                                    alt="Solution preview"
+                                    className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                    onClick={() => openLightbox(step.assets[0], "Solution preview")}
+                                  />
+                                </div>
+                              </div>
+                            ) : step.phase === "learnings" ? (
                               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                                 {step.description
                                   .split("|")
@@ -762,17 +828,52 @@ export function CaseStudyModal({
                                   ))}
                               </ul>
                             ) : step.phase === "flow" ? (
-                              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm text-gray-600 dark:text-gray-400 leading-snug">
-                                {step.description
-                                  .split("\n\n\n\n")
-                                  .map((para, pi) => (
-                                    <div key={pi} className="flex-1">
-                                      {para.split("\n\n").map((line, li) => (
-                                        <p key={li}>{renderRichText(line)}</p>
-                                      ))}
-                                    </div>
-                                  ))}
-                              </div>
+                              <>
+                                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                                  {step.description
+                                    .split("\n\n")
+                                    .filter(p => p.trim() && !p.match(/^\{\{quote:(.+)\}\}$/s))
+                                    .map((line, li) => (
+                                      <p key={li}>{renderRichText(line)}</p>
+                                    ))}
+                                </div>
+                                {/* Flow assets */}
+                                {step.assets.length > 0 && (
+                                  <div className="flex flex-wrap gap-3 mt-4">
+                                    {step.assets.map((asset, i) => {
+                                      const group = step.assets.map((a, j) => ({
+                                        src: a,
+                                        alt: `${step.phase === "flow" && study.id === "health-app" ? "System Workflow" : PHASE_LABELS[step.phase]} asset ${j + 1}`,
+                                      }));
+                                      return (
+                                        <img
+                                          key={i}
+                                          src={asset}
+                                          data-src={asset}
+                                          alt={`System Workflow asset ${i + 1}`}
+                                          className="h-20 w-32 object-cover rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 cursor-pointer hover:opacity-80 hover:border-indigo-400 transition-all"
+                                          loading="lazy"
+                                          onClick={() => openLightbox(asset, `System Workflow asset ${i + 1}`, group, i)}
+                                        />
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                                {/* Quote after assets */}
+                                {step.description.split("\n\n").filter(p => p.match(/^\{\{quote:(.+)\}\}$/s)).map((para, qi) => {
+                                  const quoteMatch = para.match(/^\{\{quote:(.+)\}\}$/s);
+                                  if (!quoteMatch) return null;
+                                  return (
+                                    <blockquote key={`fq${qi}`} className="relative text-center mt-8 mb-4 py-5 px-6">
+                                      <span className="absolute -top-2 left-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&ldquo;</span>
+                                      <p className="text-base font-medium text-gray-800 dark:text-gray-200 leading-relaxed italic">
+                                        {quoteMatch[1]}
+                                      </p>
+                                      <span className="absolute -bottom-2 right-2 text-3xl text-indigo-200 dark:text-indigo-800 font-serif leading-none" aria-hidden="true">&rdquo;</span>
+                                    </blockquote>
+                                  );
+                                })}
+                              </>
                             ) : (
                               <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-snug">
                                 {step.description
@@ -824,7 +925,7 @@ export function CaseStudyModal({
                               )}
 
                             {/* Asset thumbnails — larger for usability */}
-                            {step.assets.length > 0 && (
+                            {step.phase !== "solution" && step.phase !== "flow" && step.assets.length > 0 && (
                               <div className="flex flex-wrap gap-3 mt-4">
                                 {step.assets.map((asset, i) => {
                                   const group = step.assets.map((a, j) => ({
@@ -864,6 +965,82 @@ export function CaseStudyModal({
                     </div>
                   </section>
 
+                  {/* Trade-offs */}
+                  {study.tradeoffs && (
+                    <section
+                      aria-labelledby="tradeoffs-heading"
+                      className="p-5 -mx-1"
+                    >
+                      <h3
+                        id="tradeoffs-heading"
+                        className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-3"
+                      >
+                        Trade-offs
+                      </h3>
+                      <p className="text-base text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line text-justify">
+                        {study.tradeoffs}
+                      </p>
+                      {study.id === "health-app" && (<>
+                        <table className="w-full mt-5 text-sm border-collapse">
+                          <thead>
+                            <tr className="border-b border-gray-200 dark:border-gray-700">
+                              <th className="text-left py-2 pr-4 font-bold text-gray-900 dark:text-white">Option</th>
+                              <th className="text-left py-2 pr-4 font-bold text-gray-900 dark:text-white">Benefit</th>
+                              <th className="text-left py-2 font-bold text-gray-900 dark:text-white">Risk</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-b border-gray-100 dark:border-gray-800">
+                              <td className="py-2 pr-4 text-gray-700 dark:text-gray-300">Free shift swaps</td>
+                              <td className="py-2 pr-4 text-gray-700 dark:text-gray-300">High flexibility</td>
+                              <td className="py-2 text-gray-700 dark:text-gray-300">Understaffing</td>
+                            </tr>
+                            <tr>
+                              <td className="py-2 pr-4 text-gray-700 dark:text-gray-300">Manager approval</td>
+                              <td className="py-2 pr-4 text-gray-700 dark:text-gray-300">Reliability</td>
+                              <td className="py-2 text-gray-700 dark:text-gray-300">Slight friction</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p className="mt-6 text-base text-gray-700 dark:text-gray-300 leading-snug text-justify">
+                          Allowing unrestricted shift swaps would maximise employee flexibility but could result in understaffed shifts and service disruption. I chose a manager-approved workflow with automated validation to balance flexibility with operational reliability.
+                        </p>
+                      </>)}
+                    </section>
+                  )}
+
+                  {/* Coverage Check Success + Failure (Shift project only) */}
+                  {study.id === "health-app" && (() => {
+                    const coverageImages = [
+                      { src: "/resources/Shift-App/CoverageCheck-Success.png", alt: "Coverage Check Success" },
+                      { src: "/resources/Shift-App/CoveragCheck-Failure.png", alt: "Coverage Check Failure" },
+                    ];
+                    return (
+                      <section className="rounded-xl bg-blue-50/40 dark:bg-blue-950/10 p-5 -mx-1">
+                        <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
+                          Coverage Check Success + Failure
+                        </h3>
+                        <div className="flex flex-col sm:flex-row gap-5 items-center">
+                          <div className="flex gap-3 flex-shrink-0">
+                            {coverageImages.map((img, idx) => (
+                              <div key={idx} className="w-16">
+                                <img
+                                  src={img.src}
+                                  alt={img.alt}
+                                  className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                                  onClick={() => openLightbox(img.src, img.alt, coverageImages, idx)}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          <p className="flex-1 text-base text-gray-700 dark:text-gray-300 leading-snug text-justify">
+                            Shift swaps are automatically evaluated against minimum staffing requirements before approval.
+                          </p>
+                        </div>
+                      </section>
+                    );
+                  })()}
+
                   {/* Key Decisions */}
                   {study.metrics.length > 0 && (
                     <section aria-labelledby="metrics-heading">
@@ -873,32 +1050,44 @@ export function CaseStudyModal({
                       >
                         Key Decisions
                       </h3>
-                      <ul className="space-y-2">
-                        {study.metrics.map((metric, i) => (
-                          <li
-                            key={i}
-                            className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-300"
-                          >
-                            <span className="text-indigo-500 mt-0.5 flex-shrink-0">
-                              {"\u2713"}
-                            </span>
-                            <span>
-                              {metric.split(/\*\*/).map((part, pi) =>
-                                pi % 2 === 1 ? (
-                                  <strong
-                                    key={pi}
-                                    className="font-semibold text-gray-900 dark:text-white"
-                                  >
-                                    {part}
-                                  </strong>
-                                ) : (
-                                  part
-                                ),
-                              )}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="flex flex-col sm:flex-row gap-5 items-start">
+                        <ul className="space-y-2 flex-1">
+                          {study.metrics.map((metric, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-300"
+                            >
+                              <span className="text-indigo-500 mt-0.5 flex-shrink-0">
+                                {"\u2713"}
+                              </span>
+                              <span>
+                                {metric.split(/\*\*/).map((part, pi) =>
+                                  pi % 2 === 1 ? (
+                                    <strong
+                                      key={pi}
+                                      className="font-semibold text-gray-900 dark:text-white"
+                                    >
+                                      {part}
+                                    </strong>
+                                  ) : (
+                                    part
+                                  ),
+                                )}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        {study.id === "health-app" && (
+                          <div className="flex-shrink-0 p-1 sm:w-24 self-center">
+                            <img
+                              src="/resources/Shift-App/SwapWithCoworker.png"
+                              alt="Swap with coworker screen"
+                              className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200"
+                              onClick={() => openLightbox("/resources/Shift-App/SwapWithCoworker.png", "Swap with coworker screen")}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </section>
                   )}
 
@@ -916,6 +1105,23 @@ export function CaseStudyModal({
                           <li key={i} className="flex gap-2.5">
                             <span className="text-indigo-400 flex-shrink-0 mt-0.5">&bull;</span>
                             <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
+                  {/* Expected Impact (Shift project) */}
+                  {study.expectedImpact && (
+                    <section className="rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 p-5 -mx-1">
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3">
+                        Expected Impact
+                      </h3>
+                      <ul className="space-y-2">
+                        {study.expectedImpact.split("|").filter(Boolean).map((item, i) => (
+                          <li key={i} className="flex gap-2.5 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                            <span className="text-indigo-400 flex-shrink-0 mt-1">•</span>
+                            <span>{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -1000,27 +1206,6 @@ export function CaseStudyModal({
                   )}
 
                   {/* Tools */}
-                  {study.codeView && (
-                    <section aria-labelledby="tools-heading">
-                      <h3
-                        id="tools-heading"
-                        className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300 mb-3"
-                      >
-                        Tools
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {study.codeView.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 rounded-lg text-xs font-medium bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </section>
-                  )}
-
                   {/* Interactive Prototype */}
                   {interactiveCaseStudy && prototypeScreens.length > 0 && (
                     <section aria-labelledby="prototype-heading">

@@ -24,6 +24,7 @@ export interface CaseStudy {
   processIntro?: string;
   processLabel?: string;
   learnings?: string;
+  expectedImpact?: string;
   impact?: string;
   uxui?: {
     context?: string;

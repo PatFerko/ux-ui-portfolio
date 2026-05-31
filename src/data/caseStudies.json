@@ -36,29 +36,13 @@
     "processNarrative": [
       {
         "phase": "solution",
-        "description": "Designed a QR-based booking system that redistributes demand by guiding guests toward less crowded time slots using real-time availability and visual cues. Guests can explore occupancy levels, identify peak times, and optionally reserve a slot while retaining flexibility.\n\n{{quote:Guide behaviour, don\u2019t enforce it.\\nInstead of controlling users, the system guides their decisions to improve overall flow.}}",
-        "assets": []
+        "description": "Designed a QR-based booking system that redistributes demand by guiding guests toward less crowded time slots using real-time availability and visual cues. Guests can explore occupancy levels, identify peak times, and optionally reserve a slot while retaining flexibility.\n\n{{quote:Instead of controlling users, the system guides their decisions to improve overall flow.}}",
+        "assets": ["/resources/Bft-App/Booking.png"]
       },
       {
         "phase": "flow",
         "description": "Guests access the system via QR code, view breakfast availability, and select a preferred time slot. The system validates availability in real time and suggests alternatives if a slot is unavailable. After booking, guests can manage their reservation by modifying or canceling it as needed.",
         "assets": ["/resources/Bft-App/Flow7.png"]
-      },
-      {
-        "phase": "wireframes_final",
-        "description": "",
-        "assets": [
-          "/resources/Bft-App/Overview-iPhoneMockup.png",
-          "/resources/Bft-App/OverviewiPh17Pro.png",
-          "/resources/Bft-App/ConfirmationiPh17.png",
-          "/resources/Bft-App/Confirmation-iPh15ProMockup.png",
-          "/resources/Bft-App/Occupancy-iPh17Pro.png",
-          
-          "/resources/Bft-App/BookingSlots-iPh1ProMockup.png",
-          "/resources/Bft-App/Wireframe-Overview.png",
-          "/resources/Bft-App/Wireframe-BookingSlots.png",
-          "/resources/Bft-App/Wireframe-Confirmation.png"
-        ]
       },
       {
         "phase": "system",
@@ -93,36 +77,30 @@
     "tags": [],
     "thumbnail": "/resources/Shift-App/ScheduleMockup.png",
     "thumbnailIsVideo": false,
+    "heroImage": "/resources/Shift-App/WorkerMockup.png",
+    "observationFromExperience": "While working in hospitality, I frequently observed staff relying on **WhatsApp messages, printed schedules, and manager coordination** to handle shift changes.\n\n**Last-minute updates** often created confusion, increased workload for managers, and made **staffing difficult to track**.",
+    "uxui": {
+      "uxDecisions": "##Process##Designed a mobile-first shift management experience focused on reducing coordination effort and simplifying shift swaps for hospitality staff.|##User Flow##The swap flow guides staff from selecting a shift through partner selection, system validation, and manager approval — with clear feedback at each step.##imgleft##/resources/Shift-App/MyFlowFinal.png",
+      "userFlow": "##Schedule Overview##Staff can view upcoming shifts and quickly initiate a swap request.##imgbelow##/resources/Shift-App/Schedule-Overview.png|##Shift Detail##Shift information and staffing requirements are clearly presented before requesting a swap.##imgbelow##/resources/Shift-App/ShiftDetails.png|##Select Coworker##Available coworkers are ranked using staffing and qualification criteria.##imgbelow##/resources/Shift-App/SwapWithCoworker.png|##Request Swap##Employees choose an alternative shift while reviewing the impact on coverage.##imgbelow##/resources/Shift-App/RequesSwap.png|##Coverage Validation##Real-time validation immediately communicates whether staffing requirements remain satisfied.##imgbelow2##/resources/Shift-App/CoverageCheck-Success.png;/resources/Shift-App/CoveragCheck-Failure.png|##Success Screen##Users receive confirmation once the schedule has been successfully updated.##imgbelow##/resources/Shift-App/ShiftUpdated.png",
+      "learnings": "Designing for workforce management requires balancing employee autonomy with business constraints|Product decisions often happen beyond the interface through workflows, validation rules, and approval processes|Clear system feedback helps users understand scheduling outcomes and reduces coordination effort"
+    },
     "overview": "While working in hospitality, I observed that shift coordination relied on manual communication, making it difficult to manage changes, preferences, and last-minute updates.",
     "introduction": "While working in gastronomy and hotel environments, I experienced firsthand how shift coordination often relies on manual communication, making it difficult to manage swaps, preferences, and last-minute changes.",
     "problemStatement": "Shift management is often handled through static schedules or informal channels (e.g. WhatsApp, printed rosters), leading to:\n\n• Lack of real-time visibility\n\n• High coordination effort for managers\n\n• Frequent miscommunication\n\nThis leads to understaffed shifts, increased workload for managers, and frustration for staff.",
     "keyInsight": "Most issues don’t come from the schedule itself, but from last-minute changes and the lack of real-time updates.",
     "designGoal": "I prioritised real-time updates and automated validation over static scheduling to reduce coordination overhead and prevent operational failures.",
-    "hypothesis": "Designed a mobile-first system enabling staff to manage shifts and request swaps in real time, while managers maintain reliable staffing through automated validation and approval workflows.\n\nThis approach reduces manual coordination and improves reliability in high-pressure hospitality environments.",
+    "hypothesis": "Designed a mobile-first system enabling staff to manage shifts and request swaps in real time, while managers maintain reliable staffing through automated validation and approval workflows.\n\nThis approach reduces manual coordination and improves reliability in high-pressure hospitality environments.\n\n{{quote:Enable flexibility, but protect operational reliability.}}",
     "tradeoffs": "A fully flexible system would increase user freedom but risk understaffing and service disruption.",
-    "processIntro": "Structured shift swap and validation logic through user flows, then tested interaction patterns using low- and mid-fidelity wireframes.",
+    "processIntro": "To balance employee flexibility with operational reliability, the workflow validates staffing coverage before approving shift changes.",
     "processNarrative": [
       {
         "phase": "flow",
         "description": "",
         "assets": ["/resources/Shift-App/MyFlowFinal.png"]
-      },
-      {
-        "phase": "wireframes",
-        "description": "",
-        "assets": [
-          "/resources/Shift-App/ScheduleMockup.png",
-          "/resources/Shift-App/Schedule.png",
-          "/resources/Shift-App/ShiftDetail.png",
-          "/resources/Shift-App/ChooseSwapPartner.png",
-          "/resources/Shift-App/RequestSwap.png",
-          "/resources/Shift-App/SystemValidation.png",
-          "/resources/Shift-App/SystemValidation-No.png",
-          "/resources/Shift-App/Approval.png"
-        ]
       }
     ],
     "learnings": "Designed for multiple user roles, balancing staff flexibility with managerial control.|Simplified complex operational rules (e.g. shift validation) into clear, intuitive interactions.|Learned that most scheduling issues stem from real-time changes, not initial planning.",
+    "expectedImpact": "Reduced manager coordination effort|Faster shift swap resolution|Improved staffing reliability|Better visibility for employees",
     "beforeAfterVisuals": [],
     "metrics": [
       "Prioritised simplicity over flexibility to reduce coordination effort in high-pressure environments",

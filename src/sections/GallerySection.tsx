@@ -15,7 +15,7 @@ const GALLERY_ITEMS: GalleryItemData[] = [
   {
     id: 'g10',
     type: '',
-    src: 'https://placehold.co/400x280/002fa7/002fa7',
+    src: '/resources/Bft-App/Overview Desktop.png',
     alt: '',
     isInteractive: false,
   },
@@ -29,7 +29,7 @@ const GALLERY_ITEMS: GalleryItemData[] = [
   {
     id: 'g11',
     type: '',
-    src: '/resources/Bft-App/Overview-M2.png',
+    src: '/resources/FromGithub/artGalleryHomepage.png',
     alt: '',
     isInteractive: false,
   },
@@ -51,28 +51,35 @@ const GALLERY_ITEMS: GalleryItemData[] = [
   {
     id: 'g5',
     type: '',
-    src: '/resources/Bft-App/BookingSlots-iPh1ProMockup.png',
+    src: '/resources/Bft-App/iPhone 15 Pro.png',
     alt: '',
     isInteractive: false,
   },
   {
     id: 'g6',
     type: '',
-    src: 'https://placehold.co/400x300/ff8c00/ff8c00',
+    src: '/resources/Bft-App/Desktop-Overview3.png',
     alt: '',
     isInteractive: false,
   },
   {
     id: 'g7',
     type: '',
-    src: '/resources/FromGithub/artGalleryHomepage.png',
+    src: '/resources/Bft-App/Overview-M2.png',
     alt: '',
     isInteractive: false,
   },
   {
     id: 'g8',
     type: '',
-    src: 'https://placehold.co/400x280/002fa7/002fa7',
+    src: '/resources/Bft-App/MockupHandsOverview.png',
+    alt: '',
+    isInteractive: false,
+  },
+  {
+    id: 'g9',
+    type: '',
+    src: '/resources/Bft-App/BookingSlots-iPh1ProMockup.png',
     alt: '',
     isInteractive: false,
   },
@@ -83,22 +90,30 @@ export function GallerySection() {
   const { theme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
   const [selectedItem, setSelectedItem] = useState<GalleryItemData | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const isDark = theme === 'dark';
 
   function handleSelect(item: GalleryItemData) {
+    const idx = GALLERY_ITEMS.findIndex(g => g.id === item.id);
     setSelectedItem(item);
+    setSelectedIndex(idx);
+  }
+
+  function handlePrev() {
+    const newIndex = (selectedIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+    setSelectedIndex(newIndex);
+    setSelectedItem(GALLERY_ITEMS[newIndex]);
+  }
+
+  function handleNext() {
+    const newIndex = (selectedIndex + 1) % GALLERY_ITEMS.length;
+    setSelectedIndex(newIndex);
+    setSelectedItem(GALLERY_ITEMS[newIndex]);
   }
 
   function handleClose() {
     setSelectedItem(null);
-  }
-
-  function handleCloseKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleClose();
-    }
   }
 
   return (
@@ -157,8 +172,7 @@ export function GallerySection() {
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={handleClose}>
               <motion.div
                 key="focused"
-                className={`w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl
-                  ${isDark ? 'bg-gray-800' : 'bg-white'}`}
+                className={`w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl relative bg-transparent`}
                 initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.95 }}
@@ -173,26 +187,25 @@ export function GallerySection() {
                   alt={selectedItem.alt}
                   className="w-full h-auto object-cover"
                 />
-                <div className={`p-4 flex items-center justify-between ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-                  <div>
-                    <p className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      {selectedItem.alt}
-                    </p>
-                    <p className={`text-sm mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      {selectedItem.type.charAt(0).toUpperCase() + selectedItem.type.slice(1)}
-                      {selectedItem.isInteractive && ' · Interactive'}
-                    </p>
-                  </div>
-                  <button
-                    onClick={handleClose}
-                    onKeyDown={handleCloseKeyDown}
-                    className={`p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500
-                      ${isDark ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-100 text-gray-600'}`}
-                    aria-label="Close focused view"
-                  >
-                    ✕
-                  </button>
-                </div>
+                {/* Navigation arrows */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 dark:bg-gray-700/30 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/30 dark:hover:bg-gray-600/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  aria-label="Previous image"
+                >
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M11 14L6 9l5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 dark:bg-gray-700/30 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/30 dark:hover:bg-gray-600/40 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  aria-label="Next image"
+                >
+                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M7 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </motion.div>
             </div>
           </>
