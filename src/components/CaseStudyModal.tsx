@@ -502,6 +502,29 @@ export function CaseStudyModal({
                                     ))}
                                   </ul>
                                 )
+                              ) : value.startsWith("##") ? (
+                                (() => {
+                                  const m = value.match(/^##(.+?)##(.+?)(?:##img##(.+)|##imgleft##(.+))?$/s);
+                                  if (!m) return <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{value}</p>;
+                                  const imgRight = m[3]; const imgLeft = m[4];
+                                  return (
+                                    <div className={(imgRight || imgLeft) ? "flex flex-col sm:flex-row gap-6 items-start py-2" : ""}>
+                                      {imgLeft && (
+                                        <div className="flex-shrink-0 sm:w-28 p-1 mt-1">
+                                          <img src={imgLeft} alt={m[1]} className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200" onClick={() => openLightbox(imgLeft, m[1])} />
+                                        </div>
+                                      )}
+                                      <div className="flex-1">
+                                        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">{m[2]}</p>
+                                      </div>
+                                      {imgRight && (
+                                        <div className="flex-shrink-0 sm:w-28 p-1 mt-1">
+                                          <img src={imgRight} alt={m[1]} className="w-full rounded-xl object-cover shadow-md border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-200" onClick={() => openLightbox(imgRight, m[1])} />
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                })()
                               ) : (
                                 value.split("\n\n").map((para, i) => (
                                   <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
